@@ -4,7 +4,7 @@ import Home from './Screens/Home';
 
 export default function App() {
   return (
-    <View className="flex-1">
+    <View className="flex-1 mt-8">
       <StatusBar style="auto" />
       <Home />
     </View>
