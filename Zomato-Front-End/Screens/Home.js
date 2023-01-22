@@ -32,7 +32,7 @@ export default function Home() {
 
                 {/* status */}
 
-                <ScrollView className="mt-5" horizontal showsHorizontalScrollIndicator={false}>
+                <ScrollView className="mt-5 pl-4" horizontal showsHorizontalScrollIndicator={false}>
                     <Status />
                     <Status />
                     <Status />
@@ -44,12 +44,12 @@ export default function Home() {
 
 
                 {/* popular */}
-                <View className="mt-5">
+                <View className="mt-5 ">
                     <View className="px-4">
                         <BigText title={"Popular"} />
                     </View>
 
-                    <ScrollView className="mt-5" horizontal showsHorizontalScrollIndicator={false}>
+                    <ScrollView className="mt-5 px-4" horizontal showsHorizontalScrollIndicator={false}>
                         <Popular />
                         <Popular />
                         <Popular />
@@ -61,11 +61,11 @@ export default function Home() {
 
                 {/* categories */}
                 <View className="mt-5">
-                    <View className="px-4">
+                    <View className="px-4" >
                         <BigText title={"Categories"} />
                     </View>
 
-                    <ScrollView className="mt-5" horizontal showsHorizontalScrollIndicator={false} >
+                    <ScrollView className="mt-5 px-4" horizontal showsHorizontalScrollIndicator={false} >
                         <Categories />
                         <Categories />
                         <Categories />

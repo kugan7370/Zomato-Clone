@@ -7,7 +7,8 @@ export default function App() {
   return (
     <View className="flex-1 mt-8">
       <StatusBar style="auto" />
-      <Details />
+      <Home />
+      {/* <Details /> */}
     </View>
   );
 }

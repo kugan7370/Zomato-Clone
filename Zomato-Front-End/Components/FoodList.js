@@ -16,7 +16,7 @@ export default function FoodList() {
                 <SmallText title={"publishing and graphic design, Lorem ipsum is a placeholder text commonly used "} />
                 <View>
                     <View className='flex-row justify-between items-center '>
-                        <Text className="text-primary-100  font-bold">$490.00</Text>
+                        <Text className="text-yellow-500  font-bold">💰 490.00</Text>
                         <TouchableOpacity onPress={() => setIsLiked(!isLiked)} className="absolute right-4 top-2">
                             <FontAwesome name={isLiked ? "heart" : "heart-o"} size={20} color="red" />
                         </TouchableOpacity>

@@ -49,7 +49,10 @@ export default function Details() {
             <View className="mt-5 px-4">
                 <View className="flex-row justify-between items-center">
                     <Text className="font-bold text-xl">Chicken</Text>
-                    <Text className="font-bold text-lg text-primary-100">$ 20.00</Text>
+                    <Text className="font-bold text-lg">
+                        <Text className="font-bold text-lg">💰  </Text>
+                        20.00
+                    </Text>
                 </View>
             </View>
 
