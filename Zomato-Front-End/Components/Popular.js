@@ -14,7 +14,7 @@ export default function Popular() {
                 <Text className="text-yellow-500 font-bold">💰 490.00</Text>
             </View>
             <TouchableOpacity onPress={() => setIsLiked(!isLiked)} className="absolute right-4 top-2">
-                <FontAwesome name={isLiked ? "heart" : "heart-o"} size={24} color="red" />
+                <FontAwesome name={isLiked ? "heart" : "heart-o"} size={20} color="red" />
             </TouchableOpacity>
         </View>
     )
