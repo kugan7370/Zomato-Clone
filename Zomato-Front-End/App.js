@@ -1,16 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, Text, View } from 'react-native';
-import Cart from './Screens/Cart';
-import Details from './Screens/Details';
-import Home from './Screens/Home';
+import RootNavigation from './Navigation/RootNavigation';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
 export default function App() {
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: 'white'
+    },
+  };
+
+
+
   return (
-    <View className="flex-1 mt-8">
+    <View className="flex-1 mt-8 ">
       <StatusBar style="auto" />
-      {/* <Home /> */}
-      {/* <Details /> */}
-      <Cart />
+      <NavigationContainer theme={MyTheme}>
+        <RootNavigation />
+      </NavigationContainer>
+
     </View>
   );
 }

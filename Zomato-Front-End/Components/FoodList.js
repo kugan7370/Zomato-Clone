@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import { FontAwesome } from '@expo/vector-icons';
 import BigText from './BigText'
 import SmallText from './SmallText'
+import { useNavigation } from '@react-navigation/native';
 
 export default function FoodList() {
     const [isLiked, setIsLiked] = useState(true)
+    const navigation = useNavigation();
     return (
-        <View className="flex-row justify-center item-start gap-4 shadow-lg mb-4">
+        <TouchableOpacity onPress={() => navigation.navigate('details')} className="flex-row justify-center item-start gap-4 shadow-lg mb-4">
             <View className='h-36 w-32'>
                 <Image className="w-full h-full object-fill  rounded-l-3xl " source={{ uri: 'https://www.refrigeratedfrozenfood.com/ext/resources/NEW_RD_Website/DefaultImages/default-pasta.jpg?1430942591' }} />
             </View>
@@ -23,6 +25,6 @@ export default function FoodList() {
                     </View>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }

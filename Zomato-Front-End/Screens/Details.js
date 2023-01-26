@@ -1,12 +1,14 @@
-import { View, Text, Image, ScrollView } from 'react-native'
+import { View, Text, Image, ScrollView, Touchable, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { AntDesign, MaterialIcons, Ionicons, Entypo } from '@expo/vector-icons';
 import { PrimaryColor } from '../constants/Colors';
 import SmallText from '../Components/SmallText';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Details() {
     const [quantity, setQuantity] = useState(1)
+    const navigation = useNavigation();
 
 
     const handleQuantity = (type) => {
@@ -23,7 +25,9 @@ export default function Details() {
         <View className="px-4">
             {/* header */}
             <View className="flex-row justify-between items-center">
-                <AntDesign name="arrowleft" size={24} color={PrimaryColor} />
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <AntDesign name="arrowleft" size={24} color={PrimaryColor} />
+                </TouchableOpacity>
                 <AntDesign name="heart" size={24} color={PrimaryColor} />
             </View>
 

@@ -1,23 +1,23 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import BigText from '../Components/BigText';
 import { PrimaryColor } from '../constants/Colors';
 import CartItem from '../Components/CartItem';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Cart() {
+    const navigation = useNavigation();
     return (
-        <View className="mx-6 ">
+        <View className="mx-6">
             {/* header */}
-            <View className="flex-row justify-between items-center">
-                <AntDesign name="arrowleft" size={24} color={PrimaryColor} />
+            <View className="flex-row justify-center mt-4 items-center">
                 <BigText title={"Your Food Cart"} />
-                <Text></Text>
             </View >
 
             {/* Cart items */}
-            <ScrollView className="mt-6 h-[54%]" showsVerticalScrollIndicator={false}>
+            <ScrollView className="mt-6 h-[57%]" showsVerticalScrollIndicator={false}>
                 <CartItem />
                 <CartItem />
                 <CartItem />
