@@ -24,7 +24,7 @@ export default function Details() {
     return (
         <View className="px-4">
             {/* header */}
-            <View className="flex-row justify-between items-center">
+            <View className="flex-row justify-between items-center mt-4">
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <AntDesign name="arrowleft" size={24} color={PrimaryColor} />
                 </TouchableOpacity>
@@ -34,7 +34,7 @@ export default function Details() {
 
             {/* Image */}
             <View className="justify-center items-center mt-5 ">
-                <View className="h-80 w-80 ">
+                <View className="h-72 w-72">
                     <Image className="h-full w-full rounded-full object-contain shadow-2xl" source={{ uri: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?cs=srgb&dl=pexels-ella-olsson-1640777.jpg&fm=jpg" }} />
                 </View>
             </View>

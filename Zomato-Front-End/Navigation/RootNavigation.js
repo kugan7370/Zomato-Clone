@@ -10,10 +10,10 @@ import Cart from '../Screens/Cart';
 import Saved from '../Screens/Favorites';
 import Profile from '../Screens/Profile';
 const Stack = createNativeStackNavigator();
-export default function RootNavigation() {
+export function RootNavigation() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false, }}>
-            <Stack.Screen name="home" component={BottomTapNavigation} />
+            <Stack.Screen name="home" component={Home} />
             <Stack.Screen name="details" component={Details} />
             <Stack.Screen name="cart" component={Cart} />
         </Stack.Navigator>
@@ -24,10 +24,10 @@ export default function RootNavigation() {
 
 const Tab = createBottomTabNavigator();
 
-export function BottomTapNavigation() {
+export default function BottomTapNavigation() {
     return (
         <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: false, tabBarStyle: { height: 60, padding: 10 }, }}>
-            <Tab.Screen name="Home" component={Home} options={{
+            <Tab.Screen name="Home" component={RootNavigation} options={{
 
                 tabBarIcon: ({ color, size, focused }) => (
                     <Entypo name="home" size={24} color={focused ? 'red' : "black"} />
@@ -40,7 +40,12 @@ export function BottomTapNavigation() {
             }} />
             <Tab.Screen name="Cart" component={Cart} options={{
                 tabBarIcon: ({ color, size, focused }) => (
-                    <FontAwesome5 name="cart-plus" size={22} color={focused ? 'red' : "black"} />
+                    <View className='relative'>
+                        <FontAwesome5 name="cart-plus" size={22} color={focused ? 'red' : "black"} />
+                        <View style={{ height: 15, width: 15, borderRadius: 7.5, justifyContent: "center", alignItems: "center", backgroundColor: "red", position: "absolute", top: -10, right: -10, }} >
+                            <Text style={{ color: 'white', fontSize: 10 }}>2</Text>
+                        </View>
+                    </View>
                 )
             }} />
             <Tab.Screen name="Profile" component={Profile} options={{
@@ -48,6 +53,7 @@ export function BottomTapNavigation() {
                     <Entypo name="user" size={24} color={focused ? 'red' : "black"} />
                 )
             }} />
+
         </Tab.Navigator>
     )
 }
