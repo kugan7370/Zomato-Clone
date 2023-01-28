@@ -5,6 +5,8 @@ import { PrimaryColor } from '../constants/Colors';
 import SmallText from '../Components/SmallText';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Platform } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCarts } from '../Redux/CartSlicer';
 
 
 export default function Details() {
@@ -12,9 +14,16 @@ export default function Details() {
     const [isIOS, setIsIOS] = useState(false)
 
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     const router = useRoute()
     const { foodDetail } = router.params
+
+
+    //get cart details from state
+    const { cartItems } = useSelector((state) => state?.cart)
+
+    console.log("cart", cartItems);
 
 
     const handleQuantity = (type) => {
@@ -36,6 +45,17 @@ export default function Details() {
             setIsIOS(false)
         }
     }, []);
+
+    //add cart items
+    const addCart = () => {
+        dispatch(addCarts({
+            foodId: foodDetail._id,
+            name: foodDetail.name,
+            price: foodDetail.price,
+            image: foodDetail.image,
+            quantity
+        }))
+    }
 
 
     return (
@@ -131,9 +151,9 @@ export default function Details() {
 
 
             {/* addcart button */}
-            <View className='justify-center item-center bg-primary-100 py-2 mx-4 mt-8 rounded-xl'>
+            <TouchableOpacity onPress={addCart} className='justify-center item-center bg-primary-100 py-2 mx-4 mt-8 rounded-xl'>
                 <Text className="text-lg font-bold text-center text-white">Add to cart</Text>
-            </View>
+            </TouchableOpacity>
 
 
 

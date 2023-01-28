@@ -6,8 +6,8 @@ import Profile from './Screens/Profile';
 import Favorites from './Screens/Favorites';
 import BottomTapNavigation from './Navigation/RootNavigation';
 import { Provider } from 'react-redux';
-import { store } from './Redux/Store';
-
+import { persistor, store } from './Redux/Store';
+import { PersistGate } from 'redux-persist/es/integration/react'
 
 export default function App() {
   const MyTheme = {
@@ -24,9 +24,11 @@ export default function App() {
     <View className="flex-1">
       <StatusBar style="auto" />
       <Provider store={store}>
-        <NavigationContainer theme={MyTheme}>
-          <BottomTapNavigation />
-        </NavigationContainer>
+        <PersistGate loading={null} persistor={persistor}>
+          <NavigationContainer theme={MyTheme}>
+            <BottomTapNavigation />
+          </NavigationContainer>
+        </PersistGate>
       </Provider>
 
     </View>

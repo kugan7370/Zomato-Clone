@@ -10,8 +10,6 @@ export const getPopularProducts = createAsyncThunk("Foods/getPopularProducts", a
             method: "GET",
             url: `${BASE_URL}/api/food/get-popular-foods`,
         })
-        console.log("popular foods", response);
-
         return response?.data?.data
     } catch (error) {
         return error

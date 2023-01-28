@@ -9,6 +9,7 @@ import Details from '../Screens/Details';
 import Cart from '../Screens/Cart';
 import Saved from '../Screens/Favorites';
 import Profile from '../Screens/Profile';
+import { useSelector } from 'react-redux';
 const Stack = createNativeStackNavigator();
 export function RootNavigation() {
     return (
@@ -25,6 +26,7 @@ export function RootNavigation() {
 const Tab = createBottomTabNavigator();
 
 export default function BottomTapNavigation() {
+    const { cartItems } = useSelector((state) => state.cart)
     return (
         <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: false, tabBarStyle: { height: 60, padding: 10 }, }}>
             <Tab.Screen name="Home" component={RootNavigation} options={{
@@ -42,9 +44,9 @@ export default function BottomTapNavigation() {
                 tabBarIcon: ({ color, size, focused }) => (
                     <View className='relative'>
                         <FontAwesome5 name="cart-plus" size={22} color={focused ? 'red' : "black"} />
-                        <View style={{ height: 15, width: 15, borderRadius: 7.5, justifyContent: "center", alignItems: "center", backgroundColor: "red", position: "absolute", top: -10, right: -10, }} >
-                            <Text style={{ color: 'white', fontSize: 10 }}>2</Text>
-                        </View>
+                        {cartItems?.length > 0 && <View style={{ height: 15, width: 15, borderRadius: 7.5, justifyContent: "center", alignItems: "center", backgroundColor: "red", position: "absolute", top: -10, right: -10, }} >
+                            <Text style={{ color: 'white', fontSize: 10 }}>{cartItems?.length}</Text>
+                        </View>}
                     </View>
                 )
             }} />
