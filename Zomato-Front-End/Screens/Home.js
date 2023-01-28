@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, Image, ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text, SafeAreaView, Image, ScrollView, ActivityIndicator, FlatList } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import BigText from '../Components/BigText'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { PrimaryColor } from '../constants/Colors';
@@ -9,10 +9,40 @@ import Status from '../Components/Status';
 import Popular from '../Components/Popular';
 import Categories from '../Components/Categories';
 import FoodList from '../Components/FoodList';
+import { getFoods } from '../Redux/FoodSlicer';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPopularProducts } from '../Redux/PopularFoodSlicer';
 
 export default function Home() {
+
+    const dispatch = useDispatch()
+
+    //data from state
+    const { isLoading, popularFoods } = useSelector((state) => state?.popularFoods)
+    const { Foods } = useSelector((state) => state?.foods)
+
+
+
+
+
+    //get foods
+    useEffect(() => {
+        dispatch(getFoods())
+    }, [])
+
+    // get popular foods
+    useEffect(() => {
+        dispatch(getPopularProducts())
+    }, [])
+
+
+
+
+
+
+
     return (
-        <SafeAreaView>
+        <View className="mt-10">
             <ScrollView showsVerticalScrollIndicator={false}>
                 {/* header */}
                 <View className="flex-row justify-between items-center px-4 ">
@@ -50,10 +80,11 @@ export default function Home() {
                     </View>
 
                     <ScrollView className="mt-5 px-4" horizontal showsHorizontalScrollIndicator={false}>
-                        <Popular />
-                        <Popular />
-                        <Popular />
-                        <Popular />
+                        {popularFoods && isLoading ?
+                            <ActivityIndicator size="large" color={PrimaryColor} />
+                            : popularFoods?.map((item) => <Popular popularFood={item} key={item._id} />)
+                        }
+
 
                     </ScrollView>
                 </View>
@@ -76,13 +107,15 @@ export default function Home() {
 
                 {/* food details */}
                 <View className="mt-5 px-4">
-                    <FoodList />
-                    <FoodList />
-                    <FoodList />
-                    <FoodList />
+                    {popularFoods && isLoading ?
+                        <ActivityIndicator size="large" color={PrimaryColor} />
+                        :
+                        Foods?.map((item) => <FoodList FoodList={item} key={item._id} />)
+
+                    }
                 </View>
 
             </ScrollView>
-        </SafeAreaView>
+        </View>
     )
 }

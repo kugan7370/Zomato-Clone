@@ -4,7 +4,7 @@ import BigText from '../Components/BigText'
 import { MaterialIcons, Feather, Ionicons } from '@expo/vector-icons';
 export default function Profile() {
     return (
-        <View>
+        <View className="mt-8">
             <View className="h-72 rounded-b-3xl overflow-hidden">
                 <ImageBackground className="w-full h-full" source={{ uri: "https://img.freepik.com/free-vector/abstract-background-with-monochrome-low-poly-design_1048-14453.jpg?w=2000" }}>
                     {/* header */}

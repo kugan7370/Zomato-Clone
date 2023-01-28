@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 export default function Cart() {
     const navigation = useNavigation();
     return (
-        <View className="mx-6">
+        <View className="mx-6 mt-8">
             {/* header */}
             <View className="flex-row justify-center mt-4 items-center">
                 <BigText title={"Your Food Cart"} />
