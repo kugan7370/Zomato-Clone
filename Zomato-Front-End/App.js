@@ -8,6 +8,7 @@ import BottomTapNavigation from './Navigation/RootNavigation';
 import { Provider } from 'react-redux';
 import { persistor, store } from './Redux/Store';
 import { PersistGate } from 'redux-persist/es/integration/react'
+import Signin from './Screens/Signin';
 
 export default function App() {
   const MyTheme = {
@@ -25,9 +26,10 @@ export default function App() {
       <StatusBar style="auto" />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <NavigationContainer theme={MyTheme}>
+          <Signin />
+          {/* <NavigationContainer theme={MyTheme}>
             <BottomTapNavigation />
-          </NavigationContainer>
+          </NavigationContainer> */}
         </PersistGate>
       </Provider>
 
