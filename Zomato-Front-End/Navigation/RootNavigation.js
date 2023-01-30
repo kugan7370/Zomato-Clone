@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather, Entypo, FontAwesome5 } from '@expo/vector-icons';
@@ -9,17 +9,45 @@ import Details from '../Screens/Details';
 import Cart from '../Screens/Cart';
 import Saved from '../Screens/Favorites';
 import Profile from '../Screens/Profile';
+import Signin from '../Screens/Signin';
 import { useSelector } from 'react-redux';
 const Stack = createNativeStackNavigator();
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+
+const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        background: 'white'
+    },
+};
+
 export function RootNavigation() {
+
+    const [isAuthUser, setisAuthUser] = useState(false)
+
+    const { token } = useSelector((state) => state.user)
+
+    useEffect(() => {
+        if (token) {
+            setisAuthUser(true)
+        }
+
+    }, [token])
+
+
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }}>
-            <Stack.Screen name="home" component={Home} />
-            <Stack.Screen name="details" component={Details} />
-            <Stack.Screen name="cart" component={Cart} />
-        </Stack.Navigator>
+        <NavigationContainer theme={MyTheme}>
+            <Stack.Navigator initialRouteName={isAuthUser ? 'home' : 'signin'} screenOptions={{ headerShown: false, }} keyboardDismissMode='on-drag'>
+                <Stack.Screen name="home" component={BottomTapNavigation} />
+                <Stack.Screen name="details" component={Details} />
+                <Stack.Screen name="cart" component={Cart} />
+                <Stack.Screen name="signin" component={Signin} />
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }
+
 
 
 
@@ -29,7 +57,7 @@ export default function BottomTapNavigation() {
     const { cartItems } = useSelector((state) => state.cart)
     return (
         <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: false, tabBarStyle: { height: 60, padding: 10 }, }}>
-            <Tab.Screen name="Home" component={RootNavigation} options={{
+            <Tab.Screen name="Home" component={Home} options={{
 
                 tabBarIcon: ({ color, size, focused }) => (
                     <Entypo name="home" size={24} color={focused ? 'red' : "black"} />

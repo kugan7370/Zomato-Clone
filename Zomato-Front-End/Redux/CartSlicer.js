@@ -5,25 +5,9 @@ import { BASE_URL } from "@env"
 
 // add card items
 export const addCardItems = createAsyncThunk("Cart/addCardItems", async (data) => {
-    console.log("cartdd", data);
     return data
 })
 
-//get cart item
-// export const getCartItems = createAsyncThunk("Cart/getCartItems", async () => {
-// 
-//     try {
-//         const response = await axios({
-//             method: "GET",
-//             url: `${BASE_URL}/api/cart/get-cart-items`,
-//         })
-// 
-//         return response?.data?.data
-//     } catch (error) {
-//         return error
-//     }
-// 
-// })
 
 
 

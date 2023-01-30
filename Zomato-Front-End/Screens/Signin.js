@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, TextInput, View, Text, Touchable, TouchableOpacity, Image } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { userAuth } from '../Redux/UserSlicer';
+import { useNavigation } from '@react-navigation/native';
 
 const loginImage = 'https://fullofplants.com/wp-content/uploads/2020/05/sweet-and-sour-spicy-thai-fried-rice-easy-vegan-meal-with-vegetables-thumb-500x500.jpg'
 
 export default function Signin() {
+
+
+    const { token } = useSelector((state) => state.user)
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
+
+
+    useEffect(() => {
+        if (token) {
+            navigation.navigate('home')
+        }
+
+    }, [token])
 
     const SigninScheme = Yup.object().shape({
         email: Yup.string().email('Invalid email').required('Required'),
@@ -13,6 +29,9 @@ export default function Signin() {
     });
 
 
+    const userSignin = (values) => {
+        dispatch(userAuth(values))
+    }
     return (
 
         <View>
@@ -28,7 +47,7 @@ export default function Signin() {
 
                 <Formik
                     initialValues={{ email: '' }}
-                    onSubmit={values => console.log(values)}
+                    onSubmit={values => userSignin(values)}
                     validationSchema={SigninScheme}
                 >
                     {({ handleChange, handleBlur, handleSubmit, values, errors, isValid }) => (

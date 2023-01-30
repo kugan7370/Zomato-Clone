@@ -23,9 +23,6 @@ export default function Details() {
     //get cart details from state
     const { cartItems } = useSelector((state) => state?.cart)
 
-    console.log("cart", cartItems);
-
-
     const handleQuantity = (type) => {
         if (type === 'add') {
             setQuantity(quantity + 1)

@@ -29,7 +29,7 @@ export default function Cart() {
             </View >
 
             {/* Cart items */}
-            <ScrollView className="mt-6 h-[57%]" showsVerticalScrollIndicator={false}>
+            <ScrollView className="mt-6 h-[44%]" showsVerticalScrollIndicator={false}>
                 {cartItems && cartItems.map((item, index) => <CartItem cartItem={item} key={index} />)}
 
 
@@ -38,24 +38,28 @@ export default function Cart() {
 
             {/* checkout */}
 
-            <View className=" bg-black text-white p-4 rounded-xl mt-4">
-                <View className="flex-row justify-between items-center mb-2 ">
-                    <Text className="font-bold text-white tracking-wider">Item count</Text>
-                    <Text className="text-white">{cartItems?.length ?? 0.00}</Text>
+            <View className="p-4 bg-slate-50 rounded-xl mt-6">
+                <View className="flex-row  mb-4 ">
+                    <Text className="font-bold text-lg  tracking-wider">Order Info</Text>
+
                 </View>
                 <View className="flex-row justify-between items-center mb-2 ">
-                    <Text className="font-bold text-white tracking-wider">Sub total</Text>
-                    <Text className="text-white">$ {subTotal?.toFixed(2) ?? 0.00}</Text>
+                    <Text className="font-semibold text-slate-400 tracking-wider">Sub total</Text>
+                    <Text className="font-semibold text-slate-400">$ {subTotal?.toFixed(2) ?? 0.00}</Text>
                 </View>
                 <View className="flex-row justify-between items-center mb-2 ">
-                    <Text className="font-bold text-white tracking-wider">Discount</Text>
-                    <Text className="text-white">$ 0.00</Text>
+                    <Text className="font-semibold text-slate-400 tracking-wider">Delivery Fee</Text>
+                    <Text className="font-semibold text-slate-400">$ 0.00</Text>
+                </View>
+                <View className="flex-row justify-between items-center mb-2 ">
+                    <Text className="font-semibold text-slate-400 tracking-wider">Discount</Text>
+                    <Text className="font-semibold text-slate-400">$ 0.00</Text>
                 </View>
 
-                <View className=" h-[1px] w-full bg-slate-500 my-1" />
+                {/* <View className=" h-[1px] w-full bg-slate-500 my-1" /> */}
                 <View className="flex-row justify-between items-center mt-2 ">
-                    <Text className="font-bold text-white text-xl tracking-wider">Total</Text>
-                    <Text className="text-white text-xl">$ {subTotal?.toFixed(2) ?? 0.00}</Text>
+                    <Text className="font-bold text-slate-900 text-lg tracking-wider">Total</Text>
+                    <Text className="text-slate-900 font-semibold text-lg">$ {subTotal?.toFixed(2) ?? 0.00}</Text>
                 </View>
             </View>
 

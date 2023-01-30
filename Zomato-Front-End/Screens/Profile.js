@@ -1,8 +1,31 @@
-import { View, Text, Image, Pressable, ImageBackground } from 'react-native'
-import React from 'react'
+import { View, Text, Image, Pressable, ImageBackground, TouchableOpacity } from 'react-native'
+import React, { useEffect } from 'react'
 import BigText from '../Components/BigText'
 import { MaterialIcons, Feather, Ionicons } from '@expo/vector-icons';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useNavigation } from '@react-navigation/native';
+import { logout } from '../Redux/UserSlicer';
+
 export default function Profile() {
+    const { user, token } = useSelector((state) => state.user)
+    const dispatch = useDispatch()
+    const navigation = useNavigation()
+
+    const userLogout = async () => {
+        dispatch(logout())
+        navigation.navigate("signin")
+    }
+
+
+
+
+
+
+
+
+
+
     return (
         <View className="mt-8">
             <View className="h-72 rounded-b-3xl overflow-hidden">
@@ -18,7 +41,7 @@ export default function Profile() {
                             <Image className="h-full w-full" source={{ uri: "https://xsgames.co/randomusers/assets/avatars/male/63.jpg" }} />
                         </View>
                         <View className="mt-2">
-                            <BigText title={"Adam John"} />
+                            <BigText title={user?.name} />
                         </View>
                     </View>
                 </ImageBackground>
@@ -48,11 +71,11 @@ export default function Profile() {
                     <Text className="text-lg font-bold ml-4 flex-1" >Notification</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </Pressable>
-                <Pressable className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
+                <TouchableOpacity onPress={userLogout} className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
                     <MaterialIcons name="logout" size={24} color="#e21414" />
                     <Text className="text-lg font-bold ml-4 flex-1" >Logout</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
-                </Pressable>
+                </TouchableOpacity>
             </View>
 
 
