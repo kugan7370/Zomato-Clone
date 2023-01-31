@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { persistor, store } from './Redux/Store';
 import { PersistGate } from 'redux-persist/es/integration/react'
 import { RootNavigation } from './Navigation/RootNavigation';
+import { StripeProvider } from '@stripe/stripe-react-native';
+import { STRIPE_PUBLIC_KEY } from "@env"
 
 export default function App() {
   return (
@@ -11,7 +13,11 @@ export default function App() {
       <StatusBar style="auto" />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <RootNavigation />
+          <StripeProvider
+            publishableKey={STRIPE_PUBLIC_KEY}
+          >
+            <RootNavigation />
+          </StripeProvider>
         </PersistGate>
       </Provider>
 

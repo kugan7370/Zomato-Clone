@@ -1948,6 +1948,11 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.51.tgz#645f33fe4e02defe26f2f5c0410e1c094eac7f5f"
   integrity sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==
 
+"@stripe/stripe-react-native@^0.23.1":
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-react-native/-/stripe-react-native-0.23.1.tgz#1baf292c6807ea2cb0f70d63d57ae15d361a4750"
+  integrity sha512-WN4Wq5HRZ8CqwQGuWgd+4aHpPMxBgTJtOc7p9PV6AxT/0ZaBizbKeMJcqkVHU0ZA80UAV2uMCuL+EaFLH67P9Q==
+
 "@types/glob@^7.1.1":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.2.0.tgz#bc1b5bf3aa92f25bd5dd39f35c57361bdce5b2eb"

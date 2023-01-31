@@ -10,7 +10,6 @@ export const addCardItems = createAsyncThunk("Cart/addCardItems", async (data) =
 
 
 
-
 const initialState = {
     isLoadingCard: false,
     cartItems: [],
@@ -59,13 +58,19 @@ const CartSlicer = createSlice({
             else {
                 state.cartItems = state.cartItems.filter((item) => item.foodId !== action.payload.foodId)
             }
+        },
+        //clear cart
+        clearCart: (state) => {
+            state.cartItems = []
         }
+
+
 
     },
 
 });
 
 
-export const { addCarts, incrementItem, decrementItem } = CartSlicer.actions
+export const { addCarts, incrementItem, decrementItem, clearCart } = CartSlicer.actions
 
 export default CartSlicer.reducer
