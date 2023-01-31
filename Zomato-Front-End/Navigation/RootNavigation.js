@@ -39,15 +39,22 @@ export function RootNavigation() {
     return (
         <NavigationContainer theme={MyTheme}>
             <Stack.Navigator initialRouteName={isAuthUser ? 'home' : 'signin'} screenOptions={{ headerShown: false, }} keyboardDismissMode='on-drag'>
-                <Stack.Screen name="home" component={BottomTapNavigation} />
-                <Stack.Screen name="details" component={Details} />
-                <Stack.Screen name="cart" component={Cart} />
                 <Stack.Screen name="signin" component={Signin} />
+                <Stack.Screen name="home" component={BottomTapNavigation} />
             </Stack.Navigator>
         </NavigationContainer>
     )
 }
 
+export const HomeStack = () => {
+    return (
+        <Stack.Navigator initialRouteName="home" screenOptions={{ headerShown: false, }} keyboardDismissMode='on-drag'>
+            <Stack.Screen name="home" component={Home} />
+            <Stack.Screen name="details" component={Details} />
+            <Stack.Screen name="cart" component={Cart} />
+        </Stack.Navigator>
+    )
+}
 
 
 
@@ -57,7 +64,7 @@ export default function BottomTapNavigation() {
     const { cartItems } = useSelector((state) => state.cart)
     return (
         <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: false, tabBarStyle: { height: 60, padding: 10 }, }}>
-            <Tab.Screen name="Home" component={Home} options={{
+            <Tab.Screen name="Home" component={HomeStack} options={{
 
                 tabBarIcon: ({ color, size, focused }) => (
                     <Entypo name="home" size={24} color={focused ? 'red' : "black"} />

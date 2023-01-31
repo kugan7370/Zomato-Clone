@@ -52,6 +52,8 @@ export default function Details() {
             image: foodDetail.image,
             quantity
         }))
+        navigation.navigate('cart')
+
     }
 
 
