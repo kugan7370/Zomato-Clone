@@ -6,9 +6,6 @@ import { PrimaryColor } from '../constants/Colors';
 import CartItem from '../Components/CartItem';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPayment } from '../Redux/PaymentSlicer';
-import { useStripe } from "@stripe/stripe-react-native";
-import { clearCart } from '../Redux/CartSlicer';
 
 const cartEmpyImage = "https://cdni.iconscout.com/illustration/premium/thumb/confusing-woman-due-to-empty-cart-4558760-3780056.png"
 
@@ -16,45 +13,13 @@ export default function Cart() {
     const navigation = useNavigation();
     const { cartItems } = useSelector((state) => state.cart)
     const [subTotal, setsubTotal] = useState(0)
-    const dispatch = useDispatch()
-    const { initPaymentSheet, presentPaymentSheet } = useStripe();
+
     useEffect(() => {
         const total = cartItems.reduce((a, b) => a + (b.price * b.quantity || 0), 0)
         setsubTotal(total)
 
 
     }, [cartItems])
-
-
-    const handlePayment = async () => {
-        const { paymentIntent, ephemeralKey, customer, publishableKey, } = await addPayment({ amount: subTotal })
-
-        const { error } = await initPaymentSheet({
-            merchantDisplayName: "Example, Inc.",
-            customerId: customer,
-            customerEphemeralKeySecret: ephemeralKey,
-            paymentIntentClientSecret: paymentIntent,
-            allowsDelayedPaymentMethods: true,
-            style: "alwaysDark",
-        });
-        if (!error) {
-            const { error } = await presentPaymentSheet();
-
-            if (error) {
-                Alert.alert(`Error code: ${error.code}`, error.message);
-            } else {
-                Alert.alert('Success', 'Your order is confirmed!');
-                dispatch(clearCart())
-            }
-
-        }
-        else {
-            Alert.alert(`Error code: ${error.code}`, error.message);
-        }
-
-
-
-    }
 
 
     return (
@@ -103,8 +68,8 @@ export default function Cart() {
                 </View>
 
                 {/* button */}
-                <TouchableOpacity onPress={handlePayment} className='justify-center item-center bg-primary-100 py-2 px-4 mt-6 rounded-xl'>
-                    <Text className="text-lg font-bold text-center text-white">Proceed to pay</Text>
+                <TouchableOpacity onPress={() => navigation.navigate("deliveryAddress", { totalPrice: subTotal?.toFixed(2) })} className='justify-center item-center bg-primary-100 py-2 px-4 mt-6 rounded-xl'>
+                    <Text className="text-lg font-bold text-center text-white">Place to order</Text>
                 </TouchableOpacity>
             </View> :
                 <View className="flex-1 justify-center items-center">

@@ -18,28 +18,65 @@ const orderSchema = new Schema({
     },
     order_items: [
         {
-            food_id: {
+            foodId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Food",
+                required: true,
+            },
+            quantity: {
+                type: Number,
+                required: true,
+            },
+            name: {
                 type: String,
                 required: true,
             },
-            food_name: {
+
+            price: {
+                type: Number,
+                required: true,
+            },
+            image: {
                 type: String,
                 required: true,
             },
-            food_price: {
-                type: Number,
-                required: true,
-            },
-            food_quantity: {
-                type: Number,
-                required: true,
-            },
-            food_price: {
-                type: Number,
-                required: true,
-            }
         },
     ],
+    delivery_address: [
+        {
+            address: {
+                type: String,
+                required: true,
+            },
+            city: {
+                type: String,
+                required: true,
+            },
+            state: {
+                type: String,
+                required: true,
+            },
+            pincode: {
+                type: Number,
+                required: true,
+            },
+            phone: {
+                type: Number,
+                required: true,
+            },
+            fullName: {
+                type: String,
+                required: true,
+            },
+            latitude: {
+                type: Number,
+            },
+            longitude: {
+                type: Number,
+            }
+        },
+
+    ]
 },
 
     {

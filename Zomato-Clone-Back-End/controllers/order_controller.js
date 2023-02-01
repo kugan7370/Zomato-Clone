@@ -6,11 +6,12 @@ import Order from "../models/order_model.js";
 export const addOrders = async (req, res, next) => {
     const user_id = req.user._id
     try {
-        const { order_total, order_items } = req.body;
+        const { order_total, order_items, delivery_address } = req.body
         const order = new Order({
             user_id,
             order_total,
             order_items,
+            delivery_address
         });
         const newOrder = await order.save();
         res.status(201).json({

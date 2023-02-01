@@ -13,6 +13,8 @@ import Signin from '../Screens/Signin';
 import { useSelector } from 'react-redux';
 const Stack = createNativeStackNavigator();
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import DeliveryAddress from '../Screens/DeliveryAddress';
+import OrderSuccess from '../Screens/OrderSuccess';
 
 const MyTheme = {
     ...DefaultTheme,
@@ -52,6 +54,9 @@ export const HomeStack = () => {
             <Stack.Screen name="home" component={Home} />
             <Stack.Screen name="details" component={Details} />
             <Stack.Screen name="cart" component={Cart} />
+            <Stack.Screen name="deliveryAddress" component={DeliveryAddress} />
+            <Stack.Screen name="orderSuccess" component={OrderSuccess} />
+
         </Stack.Navigator>
     )
 }

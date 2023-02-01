@@ -1,5 +1,6 @@
 import express from 'express';
 import { addOrders, getOrders } from '../controllers/order_controller.js';
+import { verifyUser } from '../middlewares/verify_user_middlewire.js';
 
 
 
@@ -8,10 +9,10 @@ const app = express();
 
 
 //add orders
-router.post('/add-orders', addOrders);
+router.post('/add-orders', verifyUser, addOrders);
 
 //get orders
-router.get('/get-orders', getOrders);
+router.get('/get-orders', verifyUser, getOrders);
 
 
 

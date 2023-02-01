@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/es/integration/react'
 import { RootNavigation } from './Navigation/RootNavigation';
 import { StripeProvider } from '@stripe/stripe-react-native';
 import { STRIPE_PUBLIC_KEY } from "@env"
+import OrderSuccess from './Screens/OrderSuccess';
 
 export default function App() {
   return (
