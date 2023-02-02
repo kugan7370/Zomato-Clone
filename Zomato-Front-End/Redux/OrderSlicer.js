@@ -4,16 +4,20 @@ import { Alert } from 'react-native'
 import { BASE_URL } from "@env"
 
 // get orders
-export const getOrders = createAsyncThunk("Order/getOrders", async () => {
+export const getOrders = createAsyncThunk("Order/getOrders", async (token) => {
     try {
         const response = await axios({
             method: "GET",
             url: `${BASE_URL}/api/order/get-orders`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
         })
 
-        return response?.data
+        return response?.data?.data
     } catch (error) {
-        return error
+        Alert.alert("Error", error?.response?.data?.message)
     }
 
 })

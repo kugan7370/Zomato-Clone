@@ -51,7 +51,7 @@ export default function Profile() {
 
             {/* profile lists */}
             <View className="mx-6 mt-12">
-                <Pressable className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
+                <Pressable onPress={() => navigation.navigate('orderHistory')} className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
                     <Feather name="shopping-bag" size={24} color="#e21414" />
                     <Text className="text-lg font-bold ml-4 flex-1" >History of orders</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />

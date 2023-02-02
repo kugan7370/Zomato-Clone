@@ -15,6 +15,7 @@ const Stack = createNativeStackNavigator();
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import DeliveryAddress from '../Screens/DeliveryAddress';
 import OrderSuccess from '../Screens/OrderSuccess';
+import OrderHistory from '../Screens/OrderHistory';
 
 const MyTheme = {
     ...DefaultTheme,
@@ -56,6 +57,7 @@ export const HomeStack = () => {
             <Stack.Screen name="cart" component={Cart} />
             <Stack.Screen name="deliveryAddress" component={DeliveryAddress} />
             <Stack.Screen name="orderSuccess" component={OrderSuccess} />
+            <Stack.Screen name="orderHistory" component={OrderHistory} />
 
         </Stack.Navigator>
     )
