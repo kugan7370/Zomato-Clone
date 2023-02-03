@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { logout } from '../Redux/UserSlicer';
 import { clearFavourite } from '../Redux/FavoriteSlicer';
+import { removeToken } from '../Redux/utils/getToken';
 
 export default function Profile() {
     const { user, token } = useSelector((state) => state.user)
@@ -15,6 +16,7 @@ export default function Profile() {
     const userLogout = async () => {
         dispatch(logout())
         dispatch(clearFavourite())
+        removeToken()
         navigation.navigate("signin")
     }
 

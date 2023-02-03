@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 import { BASE_URL } from "@env"
 import { Alert } from 'react-native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getToken } from './utils/getToken';
 
 export const userAuth = createAsyncThunk('user/auth', async (data) => {
     try {
@@ -15,7 +16,19 @@ export const userAuth = createAsyncThunk('user/auth', async (data) => {
             }
 
         })
-        return response.data
+        if (response?.data?.token) {
+            await AsyncStorage.setItem('token', response.data.token);
+
+            const userToken = await getToken()
+            console.log("userToken=====>", userToken);
+
+            return response.data
+        }
+
+
+
+
+
 
     } catch (error) {
         return Alert.alert('Error', error?.response?.data?.message)

@@ -51,7 +51,7 @@ export default function DeliveryAddress() {
         if (!totalPrice) {
             Alert.alert('Please add items to cart')
         }
-        console.log("values", values);
+
         let addressCollection = []
         addressCollection.push(values)
 

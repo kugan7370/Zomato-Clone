@@ -9,10 +9,6 @@ import Popular from '../Components/Popular'
 export default function Favorites() {
     const { favorite } = useSelector((state) => state?.favorite)
 
-
-
-    console.log(favorite);
-
     return (
         <View className="mt-8">
             {/* title */}

@@ -33,7 +33,7 @@ export const getLikeFoods = createAsyncThunk('get/LikesFoods', async (token) => 
             }
 
         })
-        console.log(response?.data?.data);
+
         return response?.data?.data
     }
     catch (error) {
