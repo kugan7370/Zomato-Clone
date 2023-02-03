@@ -1,11 +1,11 @@
 import { View, Text, Image, Pressable, ImageBackground, TouchableOpacity } from 'react-native'
 import React, { useEffect } from 'react'
 import BigText from '../Components/BigText'
-import { MaterialIcons, Feather, Ionicons } from '@expo/vector-icons';
+import { MaterialIcons, Feather, Ionicons, AntDesign } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { useNavigation } from '@react-navigation/native';
 import { logout } from '../Redux/UserSlicer';
+import { clearFavourite } from '../Redux/FavoriteSlicer';
 
 export default function Profile() {
     const { user, token } = useSelector((state) => state.user)
@@ -14,6 +14,7 @@ export default function Profile() {
 
     const userLogout = async () => {
         dispatch(logout())
+        dispatch(clearFavourite())
         navigation.navigate("signin")
     }
 
@@ -47,13 +48,11 @@ export default function Profile() {
                 </ImageBackground>
             </View>
 
-
-
             {/* profile lists */}
             <View className="mx-6 mt-12">
-                <Pressable onPress={() => navigation.navigate('orderHistory')} className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
-                    <Feather name="shopping-bag" size={24} color="#e21414" />
-                    <Text className="text-lg font-bold ml-4 flex-1" >History of orders</Text>
+                <Pressable className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
+                    <AntDesign name="profile" size={24} color="#e21414" />
+                    <Text className="text-lg font-bold ml-4 flex-1" >Edit Profile</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </Pressable>
                 <Pressable className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
@@ -61,9 +60,9 @@ export default function Profile() {
                     <Text className="text-lg font-bold ml-4 flex-1" >Delivery address</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </Pressable>
-                <Pressable className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
-                    <MaterialIcons name="payment" size={24} color="#e21414" />
-                    <Text className="text-lg font-bold ml-4 flex-1" >Payments</Text>
+                <Pressable onPress={() => navigation.navigate('orderHistory')} className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
+                    <Feather name="shopping-bag" size={24} color="#e21414" />
+                    <Text className="text-lg font-bold ml-4 flex-1" >History of orders</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </Pressable>
                 <Pressable className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>

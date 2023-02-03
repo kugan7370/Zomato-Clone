@@ -53,6 +53,11 @@ const foodSchema = new mongoose.Schema({
         type: Number,
         default: 30,
     },
+    likedBy: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+
+    }]
 
 },
     {

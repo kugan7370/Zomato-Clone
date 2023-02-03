@@ -6,7 +6,7 @@ import OrderItems from '../Components/OrderItems'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrders } from '../Redux/OrderSlicer'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
+import moment from 'moment';
 export default function OrderHistory() {
     const { Orders } = useSelector((state) => state.order)
     const { user, token } = useSelector((state) => state.user)
@@ -50,7 +50,7 @@ export default function OrderHistory() {
                         <View className="flex-row justify-between items-center">
                             <View>
                                 <Text className='font-semibold text-base'>Order #{i + 1}</Text>
-                                <Text className="text-gray-400">23 Feb 2021, 02.01.2023</Text>
+                                <Text className="text-gray-400">{moment(items?.createdAt).format("DD MMM YYYY hh:mm A")}</Text>
                             </View>
 
                             <View>

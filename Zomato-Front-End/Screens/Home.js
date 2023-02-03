@@ -12,6 +12,7 @@ import FoodList from '../Components/FoodList';
 import { getFoods } from '../Redux/FoodSlicer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPopularProducts } from '../Redux/PopularFoodSlicer';
+import { getLikeFoods } from '../Redux/FavoriteSlicer';
 
 export default function Home() {
 
@@ -20,6 +21,7 @@ export default function Home() {
     //data from state
     const { isLoading, popularFoods } = useSelector((state) => state?.popularFoods)
     const { Foods } = useSelector((state) => state?.foods)
+    const { user, token } = useSelector((state) => state.user)
 
 
 
@@ -33,6 +35,12 @@ export default function Home() {
     // get popular foods
     useEffect(() => {
         dispatch(getPopularProducts())
+    }, [])
+
+
+    //get liked foods
+    useEffect(() => {
+        dispatch(getLikeFoods(token))
     }, [])
 
 

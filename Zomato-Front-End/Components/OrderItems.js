@@ -2,7 +2,6 @@ import { View, Text, Image } from 'react-native'
 import React from 'react'
 
 export default function OrderItems({ orderItems }) {
-    console.log("orderItems=======>", orderItems);
     return (
         <View>
             <View className="flex-row items-center  mb-4 bg-slate-50 p-4 rounded-lg">

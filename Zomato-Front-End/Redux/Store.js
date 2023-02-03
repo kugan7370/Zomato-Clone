@@ -4,6 +4,7 @@ import FoodReducers from './FoodSlicer'
 import PopularFoodReducers from './PopularFoodSlicer'
 import UserReducers from './UserSlicer'
 import OrderReducers from './OrderSlicer'
+import FavoriteReducers from './FavoriteSlicer'
 
 import {
     persistStore,
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
     popularFoods: PopularFoodReducers,
     cart: CartReducer,
     user: UserReducers,
-    order: OrderReducers
+    order: OrderReducers,
+    favorite: FavoriteReducers
 
 })
 

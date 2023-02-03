@@ -30,6 +30,12 @@ const userSchema = new mongoose.Schema({
             url: ''
         }
     },
+    likedFoods: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Food",
+        }
+    ]
 }, {
     timestamps: true
 })

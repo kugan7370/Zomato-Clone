@@ -2,6 +2,7 @@ import User from "../models/user_model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { createError } from "../utils/error.js";
+import Food from "../models/food_model.js";
 
 
 //register user
@@ -141,4 +142,59 @@ export const deleteUser = async (req, res, next) => {
     catch (error) {
         next(error);
     }
+}
+
+//like post
+export const likePost = async (req, res, next) => {
+    const userId = req.user._id
+    const foodId = req.params.id
+    try {
+
+        //check already liked
+        const alreadyLiked = await User.findById(userId)
+
+        const isLiked = alreadyLiked.likedFoods?.includes(foodId)
+
+        if (isLiked) {
+            //remove that foodId from likeBy array
+            const removeFoodFromUser = await User.findByIdAndUpdate(userId, { $pull: { likedFoods: foodId } }, { new: true })
+
+            // remove that user id from user model
+            const removeUserFromFood = await Food.findByIdAndUpdate(foodId, { $pull: { likedBy: userId } }, { new: true })
+
+
+            res.status(201).json({ success: true, message: 'Post Unliked successfully' });
+
+        }
+        else {
+            //add that foodId to likeBy array
+            const addFood = await User.findByIdAndUpdate(userId, { $push: { likedFoods: foodId } }, { new: true });
+
+            // add that user id into user model
+            const addUserToFood = await Food.findByIdAndUpdate(foodId, { $push: { likedBy: userId } }, { new: true });
+
+            res.status(201).json({ success: true, message: 'Post liked successfully', });
+
+        }
+
+    }
+    catch (error) {
+        next(error);
+    }
+}
+
+//get user like foods
+export const getLikedFoods = async (req, res, next) => {
+    const userId = req.user._id
+    try {
+        const userDetails = await User.findById(userId)
+        const likedFoods = await Food.find({ _id: { $in: userDetails.likedFoods } })
+        res.status(200).json({ success: true, data: likedFoods });
+
+    }
+    catch (error) {
+        next(error);
+    }
+
+
 }
