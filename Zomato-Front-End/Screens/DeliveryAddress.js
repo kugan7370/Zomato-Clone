@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addOrder } from '../Redux/OrderSlicer';
 import { useStripe } from "@stripe/stripe-react-native";
 import { addPayment } from '../Redux/PaymentSlicer';
-import { clearCart } from '../Redux/CartSlicer';
+import { clearCart, deleteCartItemFromDb } from '../Redux/CartSlicer';
 
 const mapImage = "https://cdn.shopify.com/s/files/1/0436/6306/5238/files/Google_Maps.png?v=1603228034"
 
@@ -81,6 +81,7 @@ export default function DeliveryAddress() {
                 const addOrderDetails = await addOrder(data, token)
                 if (addOrderDetails?.success) {
                     dispatch(clearCart())
+                    await deleteCartItemFromDb()
                     Alert.alert('Success', 'Your order is confirmed!');
                     navigation.navigate("orderSuccess")
 

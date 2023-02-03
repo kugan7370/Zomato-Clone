@@ -7,15 +7,20 @@ import { useNavigation } from '@react-navigation/native';
 import { logout } from '../Redux/UserSlicer';
 import { clearFavourite } from '../Redux/FavoriteSlicer';
 import { removeToken } from '../Redux/utils/getToken';
+import { addCardItemsToDb, clearCart } from '../Redux/CartSlicer';
 
 export default function Profile() {
     const { user, token } = useSelector((state) => state.user)
+    const { cartItems } = useSelector((state) => state.cart)
+
+    console.log("cartItems==========>", cartItems);
     const dispatch = useDispatch()
     const navigation = useNavigation()
 
     const userLogout = async () => {
         dispatch(logout())
         dispatch(clearFavourite())
+        dispatch(clearCart())
         removeToken()
         navigation.navigate("signin")
     }

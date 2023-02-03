@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { AntDesign, Entypo, MaterialIcons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
-import { decrementItem, incrementItem } from '../Redux/CartSlicer';
+import { decrementCartItemFromDb, decrementItem, incrementCartItemFromDb, incrementItem } from '../Redux/CartSlicer';
 
 
 export default function CartItem({ cartItem }) {
@@ -13,15 +13,17 @@ export default function CartItem({ cartItem }) {
 
 
 
-    const handleQuantity = (type) => {
+    const handleQuantity = async (type) => {
         if (type === 'add') {
             dispatch(incrementItem({
                 foodId: cartItem.foodId,
             }))
+            await incrementCartItemFromDb(cartItem?.foodId,)
         } else {
             dispatch(decrementItem({
                 foodId: cartItem.foodId,
             }))
+            await decrementCartItemFromDb(cartItem?.foodId)
 
         }
     }

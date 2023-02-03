@@ -13,6 +13,7 @@ import { getFoods } from '../Redux/FoodSlicer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPopularProducts } from '../Redux/PopularFoodSlicer';
 import { getLikeFoods } from '../Redux/FavoriteSlicer';
+import { getCardItemsFromDb } from '../Redux/CartSlicer';
 
 export default function Home() {
 
@@ -41,6 +42,11 @@ export default function Home() {
     //get liked foods
     useEffect(() => {
         dispatch(getLikeFoods(token))
+    }, [])
+
+    //get cart from Db
+    useEffect(() => {
+        dispatch(getCardItemsFromDb())
     }, [])
 
 

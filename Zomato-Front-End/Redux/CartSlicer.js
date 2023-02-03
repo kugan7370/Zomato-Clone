@@ -1,12 +1,110 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { BASE_URL } from "@env"
+import { Alert } from 'react-native'
+import { getToken } from './utils/getToken'
+
 
 
 // add card items
-export const addCardItems = createAsyncThunk("Cart/addCardItems", async (data) => {
-    return data
+export const addCardItemsToDb = async (data) => {
+    const token = await getToken()
+    try {
+        const response = await axios({
+            method: "post",
+            url: `${BASE_URL}/api/cart/add-cart-item`,
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            data
+        })
+        return response.data
+    } catch (error) {
+
+        Alert.alert('Error', error?.response?.data?.message)
+    }
+}
+
+//increment cart item
+export const incrementCartItemFromDb = async (foodId) => {
+    const token = await getToken()
+    try {
+        const response = await axios({
+            method: "PUT",
+            url: `${BASE_URL}/api/cart/increment-cart-item-quantity/${foodId}`,
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+        })
+        return response.data
+    } catch (error) {
+        Alert.alert('Error', error?.response?.data?.message)
+    }
+}
+
+
+//decrement cart item
+export const decrementCartItemFromDb = async (foodId) => {
+    const token = await getToken()
+    try {
+        const response = await axios({
+            method: "PUT",
+            url: `${BASE_URL}/api/cart/decrement-cart-item-quantity/${foodId}`,
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+        })
+        return response.data
+    } catch (error) {
+        Alert.alert('Error', error?.response?.data?.message)
+    }
+}
+
+
+//delete cart item
+export const deleteCartItemFromDb = async () => {
+    const token = await getToken()
+    try {
+        const response = await axios({
+            method: "delete",
+            url: `${BASE_URL}/api/cart/delete-cart-item`,
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+        })
+        return response.data
+    } catch (error) {
+        Alert.alert('Error', error?.response?.data?.message)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// get card items from Db
+export const getCardItemsFromDb = createAsyncThunk('get/cardItems', async () => {
+    const token = await getToken()
+    try {
+        const response = await axios({
+            method: "get",
+            url: `${BASE_URL}/api/cart/get-cart-items`,
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+        })
+        return response?.data?.data
+    } catch (error) {
+        Alert.alert('Error', error?.response?.data?.message)
+    }
 })
+
+
 
 
 
@@ -67,6 +165,19 @@ const CartSlicer = createSlice({
 
 
     },
+    extraReducers: (builder) => {
+        builder.addCase(getCardItemsFromDb.pending, (state) => {
+            state.isLoadingCard = true
+        })
+        builder.addCase(getCardItemsFromDb.fulfilled, (state, action) => {
+            state.isLoadingCard = false
+            state.cartItems = action.payload
+        })
+        builder.addCase(getCardItemsFromDb.rejected, (state, action) => {
+            state.isLoadingCard = false
+            state.errorCard = action.error.message
+        })
+    }
 
 });
 

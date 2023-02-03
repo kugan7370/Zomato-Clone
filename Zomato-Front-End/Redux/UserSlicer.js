@@ -18,10 +18,6 @@ export const userAuth = createAsyncThunk('user/auth', async (data) => {
         })
         if (response?.data?.token) {
             await AsyncStorage.setItem('token', response.data.token);
-
-            const userToken = await getToken()
-            console.log("userToken=====>", userToken);
-
             return response.data
         }
 

@@ -6,7 +6,7 @@ import SmallText from '../Components/SmallText';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Platform } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCarts } from '../Redux/CartSlicer';
+import { addCardItemsToDb, addCarts } from '../Redux/CartSlicer';
 
 
 export default function Details() {
@@ -44,7 +44,7 @@ export default function Details() {
     }, []);
 
     //add cart items
-    const addCart = () => {
+    const addCart = async () => {
         dispatch(addCarts({
             foodId: foodDetail._id,
             name: foodDetail.name,
@@ -52,6 +52,13 @@ export default function Details() {
             image: foodDetail.image,
             quantity
         }))
+        await addCardItemsToDb({
+            foodId: foodDetail._id,
+            name: foodDetail.name,
+            price: foodDetail.price,
+            image: foodDetail.image,
+            quantity
+        })
         navigation.navigate('cart')
 
     }
