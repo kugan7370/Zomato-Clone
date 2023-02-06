@@ -14,7 +14,7 @@ import { useStripe } from "@stripe/stripe-react-native";
 import { addPayment } from '../Redux/PaymentSlicer';
 import { clearCart, deleteCartItemFromDb } from '../Redux/CartSlicer';
 
-const mapImage = "https://cdn.shopify.com/s/files/1/0436/6306/5238/files/Google_Maps.png?v=1603228034"
+const mapImage = "https://img.freepik.com/premium-vector/urban-city-vector-map-town-streets-gps-navigation-downtown-plan-with-roads-parks-river_461812-589.jpg?w=2000"
 
 const deliveryAddressSchema = Yup.object().shape({
     fullName: Yup.string().required('full name is required'),
@@ -159,10 +159,14 @@ export default function DeliveryAddress() {
                 >
                     {({ handleChange, handleBlur, handleSubmit, values, errors, isValid }) => (
 
-                        <View className='h-[95%]'>
+                        <View className='h-[95%] bg-white'>
                             <ScrollView showsVerticalScrollIndicator={false}>
+                                <View className="my-2">
+                                    <Text className="font-poppinsSemiBold text-gray-400 text-base">Contact Details</Text>
+                                </View>
                                 {/* fullname */}
                                 <View className="my-2">
+
                                     <TextInput
                                         placeholder='Full Name'
                                         onChangeText={handleChange('fullName')}
@@ -173,44 +177,63 @@ export default function DeliveryAddress() {
                                     {errors.fullName && <Text className="text-red-500">{errors.fullName}</Text>}
                                 </View>
 
+                                <View className="my-2">
+                                    <TextInput
+                                        placeholder='Phone Number'
+                                        onChangeText={handleChange('phone')}
+                                        onBlur={handleBlur('phone')}
+                                        value={values.phone}
+                                        className="border border-1 p-4 font-poppins  border-gray-300 my-2 rounded-lg"
+                                    />
+                                    {errors.phone && <Text className="text-red-500">{errors.phone}</Text>}
+
+                                </View>
+                                <View className="my-2">
+                                    <Text className="font-poppinsSemiBold text-gray-400 my-2 text-base">Address</Text>
+                                </View>
                                 {
-                                    getLocation &&
-                                    <View className="my-2">
-                                        <View className='w-full h-52 rounded-xl overflow-hidden'>
-                                            <MapView
-                                                className='w-full font-poppins h-full'
-                                                initialRegion={{
-                                                    latitude: getLocation.latitude,
-                                                    longitude: getLocation.longitude,
-                                                    latitudeDelta: 0.0922,
-                                                    longitudeDelta: 0.0421,
-                                                }}
-                                            >
-                                                <Marker
-                                                    coordinate={{ latitude: getLocation.latitude, longitude: getLocation.longitude, }}
-                                                    title={user?.name}
-                                                    description="online food order"
-                                                />
-                                            </MapView>
+                                    getLocation ?
+                                        <View className="my-2">
+                                            <View className='w-full h-52 rounded-xl overflow-hidden'>
+                                                <MapView
+                                                    className='w-full font-poppins h-full'
+                                                    initialRegion={{
+                                                        latitude: getLocation.latitude,
+                                                        longitude: getLocation.longitude,
+                                                        latitudeDelta: 0.0922,
+                                                        longitudeDelta: 0.0421,
+                                                    }}
+                                                >
+                                                    <Marker
+                                                        coordinate={{ latitude: getLocation.latitude, longitude: getLocation.longitude, }}
+                                                        title={user?.name}
+                                                        description="online food order"
+                                                    />
+                                                </MapView>
 
 
+                                            </View>
                                         </View>
-                                    </View>
+                                        : <TouchableOpacity onPress={chooseMap} className='w-full  rounded-xl overflow-hidden border border-[1] border-gray-200 mb-4'>
+                                            <Image className="w-full h-52 " source={{ uri: mapImage }} />
+                                            <View className="my-2  p-4 rounded-lg justify-center items-center ">
+                                                <View className="flex-row items-center">
+                                                    <View className="w-8 h-8 rounded-full justify-center items-center bg-primary-100">
+                                                        <Entypo name="location" size={16} color="white" />
+                                                    </View>
+                                                    <Text className=" tracking-wide font-poppins text-gray-400 text-base ml-4">Use my current location</Text>
+
+
+                                                </View>
+
+                                            </View>
+
+                                        </TouchableOpacity>
                                 }
 
 
                                 {/* choose location */}
-                                <TouchableOpacity onPress={chooseMap} className="my-2 border border-[1] p-4 rounded-lg justify-center items-center border-gray-200">
-                                    <View className="flex-row items-center">
-                                        <View className="w-12 h-12 rounded-full justify-center items-center bg-primary-100">
-                                            <Entypo name="location" size={20} color="white" />
-                                        </View>
-                                        <Text className=" tracking-wide font-poppins text-gray-400 text-base ml-4">Use my current location</Text>
 
-
-                                    </View>
-
-                                </TouchableOpacity>
 
 
                                 {/* Address */}
@@ -238,6 +261,8 @@ export default function DeliveryAddress() {
                                     {errors.city && <Text className="text-red-500">{errors.city}</Text>}
 
                                 </View>
+
+
                                 <View className="my-2">
                                     <TextInput
                                         placeholder='State'
@@ -260,17 +285,7 @@ export default function DeliveryAddress() {
                                     {errors.pincode && <Text className="text-red-500">{errors.pincode}</Text>}
 
                                 </View>
-                                <View className="my-2">
-                                    <TextInput
-                                        placeholder='Phone Number'
-                                        onChangeText={handleChange('phone')}
-                                        onBlur={handleBlur('phone')}
-                                        value={values.phone}
-                                        className="border border-1 p-4 font-poppins  border-gray-300 my-2 rounded-lg"
-                                    />
-                                    {errors.phone && <Text className="text-red-500">{errors.phone}</Text>}
 
-                                </View>
 
 
 
