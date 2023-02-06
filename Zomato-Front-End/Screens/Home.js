@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPopularProducts } from '../Redux/PopularFoodSlicer';
 import { getLikeFoods } from '../Redux/FavoriteSlicer';
 import { getCardItemsFromDb } from '../Redux/CartSlicer';
+import { getCategories } from '../Redux/CategorySlicer';
 
 export default function Home() {
 
@@ -21,6 +22,7 @@ export default function Home() {
 
     //data from state
     const { isLoading, popularFoods } = useSelector((state) => state?.popularFoods)
+    const { isCategoryLoading, categories } = useSelector((state) => state?.categories)
     const { Foods } = useSelector((state) => state?.foods)
     const { user, token } = useSelector((state) => state.user)
 
@@ -55,6 +57,12 @@ export default function Home() {
     }, [])
 
 
+    //get categories
+    useEffect(() => {
+        dispatch(getCategories())
+    }, [])
+
+
 
 
 
@@ -81,7 +89,7 @@ export default function Home() {
 
                 {/* status */}
 
-                <ScrollView className="mt-5 pl-4" horizontal showsHorizontalScrollIndicator={false}>
+                <ScrollView className="mt-6 pl-4" horizontal showsHorizontalScrollIndicator={false}>
                     <Status />
                     <Status />
                     <Status />
@@ -93,7 +101,7 @@ export default function Home() {
 
 
                 {/* popular */}
-                <View className="mt-5 ">
+                <View className="mt-8 ">
                     <View className="px-4">
                         <BigText title={"Popular"} />
                     </View>
@@ -110,29 +118,39 @@ export default function Home() {
 
 
                 {/* categories */}
-                <View className="mt-5">
+                <View className="mt-8">
                     <View className="px-4" >
                         <BigText title={"Categories"} />
                     </View>
 
                     <ScrollView className="mt-5 px-4" horizontal showsHorizontalScrollIndicator={false} >
-                        <Categories />
-                        <Categories />
-                        <Categories />
-                        <Categories />
+                        {categories?.length > 0 && isCategoryLoading ?
+                            <ActivityIndicator size="large" color={PrimaryColor} />
+                            : categories?.map((item) => <Categories categories={item} key={item._id} />)
+                        }
                     </ScrollView>
 
                 </View>
 
-                {/* food details */}
-                <View className="mt-5 px-4">
-                    {Foods?.length > 0 && isLoading ?
-                        <ActivityIndicator size="large" color={PrimaryColor} />
-                        :
-                        Foods?.map((item) => <FoodList FoodList={item} key={item._id} />)
+                {/* food for you */}
+                <View className="mt-8">
+                    <View className="px-4" >
+                        <BigText title={"Food for you"} />
+                    </View>
 
-                    }
+                    {/* food details */}
+                    <View className="mt-8 px-4">
+                        {Foods?.length > 0 && isLoading ?
+                            <ActivityIndicator size="large" color={PrimaryColor} />
+                            :
+                            Foods?.map((item) => <FoodList FoodList={item} key={item._id} />)
+
+                        }
+                    </View>
+
                 </View>
+
+
 
             </ScrollView>
         </View>

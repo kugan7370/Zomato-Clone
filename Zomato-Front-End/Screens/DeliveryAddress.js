@@ -21,7 +21,7 @@ const deliveryAddressSchema = Yup.object().shape({
     address: Yup.string().required('address is required'),
     state: Yup.string().required('state is required'),
     pincode: Yup.string().required('pincode is required'),
-    phone: Yup.number().required('phone is required'),
+    phone: Yup.number().min(10).max(10).required('phone number is required'),
     city: Yup.string().required('city is required'),
 });
 

@@ -33,6 +33,8 @@ app.put('/update-trending-status/:id', updateTrendingStatus);
 app.get('/get-trending-foods', getTrendingFoods);
 
 
+
+
 export default app;
 
 

@@ -5,6 +5,7 @@ import PopularFoodReducers from './PopularFoodSlicer'
 import UserReducers from './UserSlicer'
 import OrderReducers from './OrderSlicer'
 import FavoriteReducers from './FavoriteSlicer'
+import CategoryReducers from './CategorySlicer'
 
 import {
     persistStore,
@@ -17,6 +18,7 @@ import {
     REGISTER,
 } from 'redux-persist'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CategorySlicer from './CategorySlicer'
 
 const persistConfig = {
     key: 'root',
@@ -30,7 +32,8 @@ const rootReducer = combineReducers({
     cart: CartReducer,
     user: UserReducers,
     order: OrderReducers,
-    favorite: FavoriteReducers
+    favorite: FavoriteReducers,
+    categories: CategoryReducers
 
 })
 
