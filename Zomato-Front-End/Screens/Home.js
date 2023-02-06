@@ -66,7 +66,7 @@ export default function Home() {
                 {/* header */}
                 <View className="flex-row justify-between items-center px-4 ">
                     <View className="h-16 w-16 bg-primary-100 rounded-full justify-center items-center">
-                        <Text className="font-bold text-center text-white p-2">Zomo</Text>
+                        <Text className="font-poppinsSemiBold text-center text-white p-2">Zomo</Text>
                     </View>
                     <View className="flex-1 ml-5">
                         <BigText title={"Deliciour asian food"} />

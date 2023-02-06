@@ -4,7 +4,7 @@ import React from 'react'
 export default function BigText({ title }) {
     return (
         <View>
-            <Text className="text-lg font-bold font-poppins capitalize">{title}</Text>
+            <Text className="text-lg  font-poppinsSemiBold capitalize">{title}</Text>
         </View>
     )
 }

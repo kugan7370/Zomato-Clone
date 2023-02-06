@@ -42,7 +42,7 @@ export default function Signin() {
             <View className="mt-8 mx-6">
 
                 <View className="my-8">
-                    <Text className="text-2xl font-bold font-poppins">Login</Text>
+                    <Text className="text-2xl  font-poppinsSemiBold">Login</Text>
                 </View>
 
                 <Formik
@@ -55,12 +55,12 @@ export default function Signin() {
                         <View>
                             {/* EMAIL */}
                             <View className="my-2">
-                                <Text className="text-sm font-bold font-poppins text-gray-500 tracking-wide">EMAIL ADDRESS</Text>
+                                <Text className="text-sm  font-poppinsSemiBold text-gray-500 tracking-wide">EMAIL ADDRESS</Text>
                                 <TextInput
                                     onChangeText={handleChange('email')}
                                     onBlur={handleBlur('email')}
                                     value={values.email}
-                                    className="border border-1 p-2 font-poppins border-gray-300 my-2 rounded-lg"
+                                    className="border border-1 p-2 font-poppinsSemiBold border-gray-300 my-2 rounded-lg"
                                 />
                                 {errors.email && <Text className="text-red-500">{errors.email}</Text>}
 
@@ -69,12 +69,12 @@ export default function Signin() {
 
                             {/* PASSWORD */}
                             <View className="my-2">
-                                <Text className="text-sm text-gray-500 font-poppins font-bold tracking-wide">PASSWORD</Text>
+                                <Text className="text-sm text-gray-500 font-poppinsSemiBold  tracking-wide">PASSWORD</Text>
                                 <TextInput
                                     onChangeText={handleChange('password')}
                                     onBlur={handleBlur('password')}
                                     value={values.password}
-                                    className="border border-1 p-2 font-poppins border-gray-300 my-2 rounded-lg"
+                                    className="border border-1 p-2 font-poppinsSemiBold border-gray-300 my-2 rounded-lg"
                                 />
                                 {errors.password && <Text className="text-red-500">{errors.password}</Text>}
 
@@ -84,20 +84,20 @@ export default function Signin() {
                             {/* forgot password */}
                             <View className="my-2">
                                 <TouchableOpacity>
-                                    <Text className="text-sm text-center font-poppins text-gray-600 font-bold tracking-wide">Forgot Password?</Text>
+                                    <Text className="text-sm text-center font-poppinsSemiBold text-gray-600  tracking-wide">Forgot Password?</Text>
                                 </TouchableOpacity>
                             </View>
 
                             {/* SIGN IN */}
 
                             <TouchableOpacity onPress={handleSubmit} className="bg-[#e53b3b] p-2 rounded-lg mt-4">
-                                <Text className="text-white text-center font-poppins p-1 font-bold text-base">Sign In</Text>
+                                <Text className="text-white text-center font-poppinsSemiBold p-1  text-base">Sign In</Text>
                             </TouchableOpacity>
 
                             {/* SIGN UP */}
                             <View className="my-2">
                                 <TouchableOpacity>
-                                    <Text className="text-sm text-center font-poppins text-gray-600 font-bold tracking-wide">Don't have an account? Sign Up</Text>
+                                    <Text className="text-sm text-center font-poppinsSemiBold text-gray-600  tracking-wide">Don't have an account? Sign Up</Text>
                                 </TouchableOpacity>
 
                             </View>

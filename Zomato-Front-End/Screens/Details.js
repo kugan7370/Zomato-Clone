@@ -114,7 +114,7 @@ export default function Details() {
             <View className="justify-center items-center mt-4 px-4">
                 <View className="flex-row justify-between items-center w-36 bg-gray-50 py-2 px-4 rounded-2xl">
                     <Entypo onPress={() => handleQuantity('mini')} name="minus" size={26} color="black" />
-                    <Text className="font-bold font-poppins text-xl">{quantity}</Text>
+                    <Text className="font-poppinsSemiBold text-xl">{quantity}</Text>
                     <MaterialIcons onPress={() => handleQuantity('add')} name="add" size={26} color="black" />
                 </View >
             </View>
@@ -123,9 +123,9 @@ export default function Details() {
             {/* header and price */}
             <View className="mt-5 px-4">
                 <View className="flex-row justify-between items-center">
-                    <Text className="font-bold font-poppins text-xl capitalize">{foodDetail.name}</Text>
-                    <Text className="font-bold font-poppins text-lg">
-                        <Text className="font-bold font-poppins text-lg">💰  </Text>
+                    <Text className="font-poppinsSemiBold text-xl capitalize">{foodDetail.name}</Text>
+                    <Text className="font-poppinsSemiBold text-lg">
+                        <Text className="font-poppinsSemiBold text-lg">💰  </Text>
                         {foodDetail.price.toFixed(2)}
                     </Text>
                 </View>
@@ -158,7 +158,7 @@ export default function Details() {
 
             {/* addcart button */}
             <TouchableOpacity onPress={addCart} className='justify-center item-center bg-primary-100 py-2 mx-4 mt-8 rounded-xl'>
-                <Text className="text-lg font-bold text-center font-poppins text-white">Add to cart</Text>
+                <Text className="text-lg  text-center font-poppinsSemiBold text-white">Add to cart</Text>
             </TouchableOpacity>
 
 

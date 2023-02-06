@@ -9,7 +9,7 @@ export default function OrderSuccess() {
         <View className="mx-10 mt-8">
             {/* header */}
             <View className="flex-row justify-center mt-4 items-center">
-                <Text className="text-lg font-bold font-poppins">THANK YOU!</Text>
+                <Text className="text-lg font-poppinsSemiBold">THANK YOU!</Text>
             </View >
 
             {/* order success */}

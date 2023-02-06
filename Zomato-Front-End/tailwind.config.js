@@ -15,7 +15,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        poppins: ["Poppins_500Medium"]
+        poppins: ["Poppins_500Medium"],
+        poppinsBold: ["Poppins_700Bold"],
+        poppinsSemiBold: ["Poppins_600SemiBold"],
       }
 
 

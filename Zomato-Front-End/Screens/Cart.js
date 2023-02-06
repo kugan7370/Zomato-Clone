@@ -44,7 +44,7 @@ export default function Cart() {
 
                 <View className="p-4 bg-slate-50 rounded-xl mt-6">
                     <View className="flex-row  mb-4 ">
-                        <Text className="font-bold font-poppins text-lg  tracking-wider">Order Info</Text>
+                        <Text className="font-poppinsSemiBold text-lg  tracking-wider">Order Info</Text>
 
                     </View>
                     <View className="flex-row justify-between items-center mb-2 ">
@@ -62,14 +62,14 @@ export default function Cart() {
 
                     {/* <View className=" h-[1px] w-full bg-slate-500 my-1" /> */}
                     <View className="flex-row justify-between items-center mt-2 ">
-                        <Text className="font-bold font-poppins text-slate-900 text-lg tracking-wider">Total</Text>
+                        <Text className=" font-poppinsSemiBold text-slate-900 text-lg tracking-wider">Total</Text>
                         <Text className="text-slate-900 font-poppins font-semibold text-lg">$ {subTotal?.toFixed(2) ?? 0.00}</Text>
                     </View>
                 </View>
 
                 {/* button */}
                 <TouchableOpacity onPress={() => navigation.navigate("deliveryAddress", { totalPrice: subTotal?.toFixed(2) })} className='justify-center item-center bg-primary-100 py-2 px-4 mt-6 rounded-xl'>
-                    <Text className="text-lg font-bold font-poppins text-center text-white">Place to order</Text>
+                    <Text className="text-lg  font-poppins text-center text-white">Place to order</Text>
                 </TouchableOpacity>
             </View> :
                 <View className="flex-1 justify-center items-center">

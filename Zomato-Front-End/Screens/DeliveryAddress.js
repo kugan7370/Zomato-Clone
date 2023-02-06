@@ -281,7 +281,7 @@ export default function DeliveryAddress() {
                             {/* SIGN IN */}
 
                             <TouchableOpacity onPress={handleSubmit} className="bg-[#e53b3b] p-2 rounded-lg mt-4 ">
-                                <Text className="text-white text-center font-poppins p-1 font-bold text-base">Proceed to pay</Text>
+                                <Text className="text-white text-center font-poppinsSemiBold p-1  text-base">Proceed to pay</Text>
                             </TouchableOpacity>
 
 

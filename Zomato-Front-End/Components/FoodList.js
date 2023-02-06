@@ -40,7 +40,7 @@ export default function FoodList({ FoodList }) {
                 <SmallText title={FoodList?.description} />
                 <View>
                     <View className='flex-row justify-between items-center '>
-                        <Text className="text-yellow-500  font-bold">💰 {FoodList?.price.toFixed(2)}</Text>
+                        <Text className="text-yellow-500  font-poppinsSemiBold">💰 {FoodList?.price.toFixed(2)}</Text>
                         <TouchableOpacity onPress={() => handelLikes(FoodList)} className="absolute right-4 top-2">
                             <FontAwesome name={isLiked ? "heart" : "heart-o"} size={20} color="red" />
                         </TouchableOpacity>
