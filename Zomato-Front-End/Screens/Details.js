@@ -114,7 +114,7 @@ export default function Details() {
             <View className="justify-center items-center mt-4 px-4">
                 <View className="flex-row justify-between items-center w-36 bg-gray-50 py-2 px-4 rounded-2xl">
                     <Entypo onPress={() => handleQuantity('mini')} name="minus" size={26} color="black" />
-                    <Text className="font-bold text-xl">{quantity}</Text>
+                    <Text className="font-bold font-poppins text-xl">{quantity}</Text>
                     <MaterialIcons onPress={() => handleQuantity('add')} name="add" size={26} color="black" />
                 </View >
             </View>
@@ -123,9 +123,9 @@ export default function Details() {
             {/* header and price */}
             <View className="mt-5 px-4">
                 <View className="flex-row justify-between items-center">
-                    <Text className="font-bold text-xl capitalize">{foodDetail.name}</Text>
-                    <Text className="font-bold text-lg">
-                        <Text className="font-bold text-lg">💰  </Text>
+                    <Text className="font-bold font-poppins text-xl capitalize">{foodDetail.name}</Text>
+                    <Text className="font-bold font-poppins text-lg">
+                        <Text className="font-bold font-poppins text-lg">💰  </Text>
                         {foodDetail.price.toFixed(2)}
                     </Text>
                 </View>
@@ -133,22 +133,22 @@ export default function Details() {
 
 
             {/* description */}
-            <ScrollView className={isIOS ? "mt-5 mx-4 h-48 " : "mt-5 mx-4 h-32 "}>
-                <Text className="text-justify">{foodDetail.description}</Text>
+            <ScrollView showsVerticalScrollIndicator={false} className={isIOS ? "mt-5 mx-4 h-48 " : "mt-5 mx-4 h-32 "}>
+                <Text className="text-justify font-poppins text-gray-500">{foodDetail.description}</Text>
             </ScrollView>
 
 
             {/* feedback */}
             <View className="mt-5 mx-4">
-                <View className="flex-row justify-between items-center">
+                <View className="flex-row  justify-between items-center">
                     <View>
-                        <Text>⭐  {foodDetail.rating}</Text>
+                        <Text className="font-poppins">⭐  {foodDetail.rating}</Text>
                     </View>
                     <View>
-                        <Text>🔥  4.75g  |  79.8 kcl</Text>
+                        <Text className="font-poppins">🔥  4.75g  |  79.8 kcl</Text>
                     </View>
                     <View>
-                        <Text>⏰  {foodDetail.deliveryTime}min</Text>
+                        <Text className="font-poppins">⏰  {foodDetail.deliveryTime}min</Text>
                     </View>
                 </View>
             </View>
@@ -158,7 +158,7 @@ export default function Details() {
 
             {/* addcart button */}
             <TouchableOpacity onPress={addCart} className='justify-center item-center bg-primary-100 py-2 mx-4 mt-8 rounded-xl'>
-                <Text className="text-lg font-bold text-center text-white">Add to cart</Text>
+                <Text className="text-lg font-bold text-center font-poppins text-white">Add to cart</Text>
             </TouchableOpacity>
 
 

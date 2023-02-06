@@ -11,7 +11,12 @@ export const getFoods = createAsyncThunk("Foods/getFoods", async () => {
 
         return response?.data?.data
     } catch (error) {
-        return error
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 
 })

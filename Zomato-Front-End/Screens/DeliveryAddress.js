@@ -168,7 +168,7 @@ export default function DeliveryAddress() {
                                         onChangeText={handleChange('fullName')}
                                         onBlur={handleBlur('fullName')}
                                         value={values.fullName}
-                                        className="border border-1 p-4 border-gray-300 my-2 rounded-lg"
+                                        className="border border-1 font-poppins p-4 border-gray-300 my-2 rounded-lg"
                                     />
                                     {errors.fullName && <Text className="text-red-500">{errors.fullName}</Text>}
                                 </View>
@@ -178,7 +178,7 @@ export default function DeliveryAddress() {
                                     <View className="my-2">
                                         <View className='w-full h-52 rounded-xl overflow-hidden'>
                                             <MapView
-                                                className='w-full h-full'
+                                                className='w-full font-poppins h-full'
                                                 initialRegion={{
                                                     latitude: getLocation.latitude,
                                                     longitude: getLocation.longitude,
@@ -205,7 +205,7 @@ export default function DeliveryAddress() {
                                         <View className="w-12 h-12 rounded-full justify-center items-center bg-primary-100">
                                             <Entypo name="location" size={20} color="white" />
                                         </View>
-                                        <Text className=" tracking-wide text-gray-400 text-base ml-4">Use my current location</Text>
+                                        <Text className=" tracking-wide font-poppins text-gray-400 text-base ml-4">Use my current location</Text>
 
 
                                     </View>
@@ -220,7 +220,7 @@ export default function DeliveryAddress() {
                                         onChangeText={handleChange('address')}
                                         onBlur={handleBlur('address')}
                                         value={values.address}
-                                        className="border border-1 p-4  border-gray-300 my-2 rounded-lg"
+                                        className="border border-1 p-4 font-poppins  border-gray-300 my-2 rounded-lg"
                                     />
                                     {errors.address && <Text className="text-red-500">{errors.address}</Text>}
 
@@ -233,7 +233,7 @@ export default function DeliveryAddress() {
                                         onChangeText={handleChange('city')}
                                         onBlur={handleBlur('city')}
                                         value={values.city}
-                                        className="border border-1 p-4  border-gray-300 my-2 rounded-lg"
+                                        className="border border-1 p-4 font-poppins  border-gray-300 my-2 rounded-lg"
                                     />
                                     {errors.city && <Text className="text-red-500">{errors.city}</Text>}
 
@@ -244,7 +244,7 @@ export default function DeliveryAddress() {
                                         onChangeText={handleChange('state')}
                                         onBlur={handleBlur('state')}
                                         value={values.state}
-                                        className="border border-1 p-4  border-gray-300 my-2 rounded-lg"
+                                        className="border border-1 p-4 font-poppins  border-gray-300 my-2 rounded-lg"
                                     />
                                     {errors.state && <Text className="text-red-500">{errors.state}</Text>}
 
@@ -255,7 +255,7 @@ export default function DeliveryAddress() {
                                         onChangeText={handleChange('pincode')}
                                         onBlur={handleBlur('pincode')}
                                         value={values.pincode}
-                                        className="border border-1 p-4  border-gray-300 my-2 rounded-lg"
+                                        className="border border-1 p-4 font-poppins  border-gray-300 my-2 rounded-lg"
                                     />
                                     {errors.pincode && <Text className="text-red-500">{errors.pincode}</Text>}
 
@@ -266,7 +266,7 @@ export default function DeliveryAddress() {
                                         onChangeText={handleChange('phone')}
                                         onBlur={handleBlur('phone')}
                                         value={values.phone}
-                                        className="border border-1 p-4  border-gray-300 my-2 rounded-lg"
+                                        className="border border-1 p-4 font-poppins  border-gray-300 my-2 rounded-lg"
                                     />
                                     {errors.phone && <Text className="text-red-500">{errors.phone}</Text>}
 
@@ -281,7 +281,7 @@ export default function DeliveryAddress() {
                             {/* SIGN IN */}
 
                             <TouchableOpacity onPress={handleSubmit} className="bg-[#e53b3b] p-2 rounded-lg mt-4 ">
-                                <Text className="text-white text-center p-1 font-bold text-base">Proceed to pay</Text>
+                                <Text className="text-white text-center font-poppins p-1 font-bold text-base">Proceed to pay</Text>
                             </TouchableOpacity>
 
 

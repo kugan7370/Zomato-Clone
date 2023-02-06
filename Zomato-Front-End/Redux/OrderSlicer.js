@@ -17,7 +17,12 @@ export const getOrders = createAsyncThunk("Order/getOrders", async (token) => {
 
         return response?.data?.data
     } catch (error) {
-        Alert.alert("Error", error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 
 })
@@ -37,7 +42,12 @@ export const addOrder = async (data, token) => {
 
         return response?.data
     } catch (error) {
-        Alert.alert("Error", error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 
 }

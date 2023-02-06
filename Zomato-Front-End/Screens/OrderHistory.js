@@ -16,9 +16,7 @@ export default function OrderHistory() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getOrders(token))
-
-
-    }, [token])
+    }, [])
     const orderPending = "rounded-lg w-32 h-10 bg-orange-600  justify-center items-center"
     const orderDelivered = "rounded-lg w-32 h-10 bg-green-600  justify-center items-center"
     const orderCancelled = "rounded-lg w-32 h-10 bg-red-600  justify-center items-center"
@@ -49,8 +47,8 @@ export default function OrderHistory() {
 
                         <View className="flex-row justify-between items-center">
                             <View>
-                                <Text className='font-semibold text-base'>Order #{i + 1}</Text>
-                                <Text className="text-gray-400">{moment(items?.createdAt).format("DD MMM YYYY hh:mm A")}</Text>
+                                <Text className='font-semibold text-base font-poppins'>Order #{i + 1}</Text>
+                                <Text className="text-gray-400 font-poppins">{moment(items?.createdAt).format("DD MMM YYYY hh:mm A")}</Text>
                             </View>
 
                             <View>
@@ -71,12 +69,12 @@ export default function OrderHistory() {
                         {/* order status */}
                         <View className="flex-row justify-between items-center">
                             <View>
-                                <Text className="text-base text-gray-400">Total</Text>
-                                <Text className="font-semibold text-base">${items?.order_total.toFixed(2)}</Text>
+                                <Text className="text-base text-gray-400 font-poppins">Total</Text>
+                                <Text className="font-semibold text-base font-poppins">${items?.order_total.toFixed(2)}</Text>
                             </View>
                             <View>
                                 <View className={orderColor(items?.order_status)}>
-                                    <Text className="text-white">{items?.order_status}</Text>
+                                    <Text className="text-white font-poppins">{items?.order_status}</Text>
                                 </View>
                             </View>
                         </View>

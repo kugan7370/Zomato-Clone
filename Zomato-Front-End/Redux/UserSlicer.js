@@ -27,7 +27,12 @@ export const userAuth = createAsyncThunk('user/auth', async (data) => {
 
 
     } catch (error) {
-        return Alert.alert('Error', error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
 
     }
 })

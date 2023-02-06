@@ -24,6 +24,11 @@ export default function Home() {
     const { Foods } = useSelector((state) => state?.foods)
     const { user, token } = useSelector((state) => state.user)
 
+    useEffect(() => {
+        if (!token) {
+            navigation.navigate("signin")
+        }
+    }, [])
 
 
 
@@ -41,7 +46,7 @@ export default function Home() {
 
     //get liked foods
     useEffect(() => {
-        dispatch(getLikeFoods(token))
+        dispatch(getLikeFoods())
     }, [])
 
     //get cart from Db
@@ -94,7 +99,7 @@ export default function Home() {
                     </View>
 
                     <ScrollView className="mt-5 px-4" horizontal showsHorizontalScrollIndicator={false}>
-                        {popularFoods && isLoading ?
+                        {popularFoods?.length > 0 && isLoading ?
                             <ActivityIndicator size="large" color={PrimaryColor} />
                             : popularFoods?.map((item) => <Popular popularFood={item} key={item._id} />)
                         }
@@ -121,7 +126,7 @@ export default function Home() {
 
                 {/* food details */}
                 <View className="mt-5 px-4">
-                    {popularFoods && isLoading ?
+                    {Foods?.length > 0 && isLoading ?
                         <ActivityIndicator size="large" color={PrimaryColor} />
                         :
                         Foods?.map((item) => <FoodList FoodList={item} key={item._id} />)

@@ -21,7 +21,12 @@ export const addCardItemsToDb = async (data) => {
         return response.data
     } catch (error) {
 
-        Alert.alert('Error', error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 }
 
@@ -38,7 +43,12 @@ export const incrementCartItemFromDb = async (foodId) => {
         })
         return response.data
     } catch (error) {
-        Alert.alert('Error', error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 }
 
@@ -56,7 +66,12 @@ export const decrementCartItemFromDb = async (foodId) => {
         })
         return response.data
     } catch (error) {
-        Alert.alert('Error', error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 }
 
@@ -74,7 +89,12 @@ export const deleteCartItemFromDb = async () => {
         })
         return response.data
     } catch (error) {
-        Alert.alert('Error', error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 }
 
@@ -100,7 +120,12 @@ export const getCardItemsFromDb = createAsyncThunk('get/cardItems', async () => 
         })
         return response?.data?.data
     } catch (error) {
-        Alert.alert('Error', error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 })
 

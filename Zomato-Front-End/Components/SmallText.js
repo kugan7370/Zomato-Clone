@@ -5,7 +5,7 @@ import React from 'react'
 export default function SmallText({ title }) {
     return (
         <View>
-            <Text numberOfLines={4} className="text-xs text-slate-600">{title}</Text>
+            <Text numberOfLines={4} className="text-xs font-poppins text-slate-600">{title}</Text>
         </View>
     )
 }

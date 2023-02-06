@@ -16,7 +16,7 @@ export default function FoodList({ FoodList }) {
     const handelLikes = async (foodData) => {
         dispatch(handleLike(foodData))
         setIsLiked(!isLiked)
-        await addLikeFoods(foodData._id, token)
+        await addLikeFoods(foodData._id)
 
     }
 

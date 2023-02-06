@@ -29,7 +29,10 @@ export const getOrders = async (req, res, next) => {
 
     try {
         // get order details
-        const get_Orders = await Order.find({ user_id: req.user._id });
+        const get_Orders = await Order.find({ user_id: req.user._id }).sort({ createdAt: -1 });
+
+
+
         res.status(200).json({
             message: "Order details",
             success: true,

@@ -38,19 +38,19 @@ export default function CartItem({ cartItem }) {
             {/* name and quantity */}
 
             <View className="ml-6" >
-                <Text className="font-bold mb-4 text-center capitalize">{cartItem.name}</Text>
+                <Text className="font-bold mb-4 text-center font-poppins capitalize">{cartItem.name}</Text>
                 <View className="flex-row justify-between items-center w-32  py-2 px-4 rounded-2xl">
                     <TouchableOpacity className="w-6 h-6 rounded-md justify-center items-center border border-1 border-gray-300" onPress={() => handleQuantity('mini')}>
                         <Entypo name="minus" size={20} color="black" />
                     </TouchableOpacity>
-                    <Text className="font-bold">  {cartItem.price} x {cartItem.quantity}  </Text>
+                    <Text className="font-bold font-poppins">  {cartItem.price} x {cartItem.quantity}  </Text>
                     <TouchableOpacity className="w-6 h-6 rounded-md justify-center items-center border border-1 border-gray-300" onPress={() => handleQuantity('add')} >
                         <MaterialIcons name="add" size={20} color="black" />
                     </TouchableOpacity>
                 </View >
 
             </View>
-            <Text className="font-bold ml-auto">$ {cartItem.price * cartItem.quantity}</Text>
+            <Text className="font-bold ml-auto font-poppins">$ {cartItem.price * cartItem.quantity}</Text>
 
             {/* price */}
         </View>

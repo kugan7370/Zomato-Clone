@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
 import { BASE_URL } from "@env"
+import { Alert } from 'react-native';
 
 //get popular foods
 export const getPopularProducts = createAsyncThunk("Foods/getPopularProducts", async () => {
@@ -12,7 +13,12 @@ export const getPopularProducts = createAsyncThunk("Foods/getPopularProducts", a
         })
         return response?.data?.data
     } catch (error) {
-        return error
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 
 })

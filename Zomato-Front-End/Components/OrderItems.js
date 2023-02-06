@@ -15,9 +15,9 @@ export default function OrderItems({ orderItems }) {
                 <View className="ml-6 flex-1" >
                     <Text className="font-bold mb-4 capitalize">{orderItems?.name}</Text>
                     <View className="flex-row justify-between items-center">
-                        <Text className="font-semibold text-xs text-gray-600">${orderItems?.price.toFixed(2)}</Text>
-                        <Text className="font-semibold text-xs text-gray-600">qty:{orderItems?.quantity}</Text>
-                        <Text className="font-semibold text-xs">$ {(orderItems?.price * orderItems?.quantity).toFixed(2)}</Text>
+                        <Text className="font-semibold text-xs font-poppins text-gray-600">${orderItems?.price.toFixed(2)}</Text>
+                        <Text className="font-semibold text-xs font-poppins text-gray-600">qty:{orderItems?.quantity}</Text>
+                        <Text className="font-semibold text-xs font-poppins">$ {(orderItems?.price * orderItems?.quantity).toFixed(2)}</Text>
                     </View >
 
                 </View>

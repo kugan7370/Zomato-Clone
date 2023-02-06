@@ -23,7 +23,12 @@ export const addPayment = async (data) => {
         return response.data
 
     } catch (error) {
-        return Alert.alert('Error', error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
 
     }
 }

@@ -9,13 +9,13 @@ export default function OrderSuccess() {
         <View className="mx-10 mt-8">
             {/* header */}
             <View className="flex-row justify-center mt-4 items-center">
-                <Text className="text-lg font-bold">THANK YOU!</Text>
+                <Text className="text-lg font-bold font-poppins">THANK YOU!</Text>
             </View >
 
             {/* order success */}
             <View className="justify-center items-center h-[80%]">
-                <Text className="text-base  text-center">Your order has been placed! you will receive it soon... </Text>
-                <Text className="text-base  text-center mb-4">🎉🎉🎉</Text>
+                <Text className="text-base  text-center font-poppins">Your order has been placed! you will receive it soon... </Text>
+                <Text className="text-base  text-center font-poppins mb-4">🎉🎉🎉</Text>
                 <Image className="w-full h-[200]" source={{ uri: orderImage }} />
 
             </View >

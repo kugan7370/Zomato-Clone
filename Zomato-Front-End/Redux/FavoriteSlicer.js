@@ -2,8 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { Alert } from 'react-native'
 import { BASE_URL } from "@env"
+import { getToken } from './utils/getToken'
 
-export const addLikeFoods = async (foodId, token) => {
+export const addLikeFoods = async (foodId) => {
+    const token = await getToken()
     try {
         const response = await axios({
             method: 'PUT',
@@ -17,12 +19,19 @@ export const addLikeFoods = async (foodId, token) => {
         return response.data
 
     } catch (error) {
-        return Alert.alert('Error', error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
+
 
     }
 }
 
-export const getLikeFoods = createAsyncThunk('get/LikesFoods', async (token) => {
+export const getLikeFoods = createAsyncThunk('get/LikesFoods', async () => {
+    const token = await getToken()
     try {
         const response = await axios({
             method: 'GET',
@@ -37,7 +46,12 @@ export const getLikeFoods = createAsyncThunk('get/LikesFoods', async (token) => 
         return response?.data?.data
     }
     catch (error) {
-        return Alert.alert('Error', error?.response?.data?.message)
+        if (error?.response) {
+            return Alert.alert('Error', error?.response?.data?.message)
+        }
+        else {
+            return Alert.alert('Error', error?.message)
+        }
     }
 })
 

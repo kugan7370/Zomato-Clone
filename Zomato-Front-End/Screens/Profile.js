@@ -12,8 +12,6 @@ import { addCardItemsToDb, clearCart } from '../Redux/CartSlicer';
 export default function Profile() {
     const { user, token } = useSelector((state) => state.user)
     const { cartItems } = useSelector((state) => state.cart)
-
-    console.log("cartItems==========>", cartItems);
     const dispatch = useDispatch()
     const navigation = useNavigation()
 
@@ -59,27 +57,27 @@ export default function Profile() {
             <View className="mx-6 mt-12">
                 <Pressable className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
                     <AntDesign name="profile" size={24} color="#e21414" />
-                    <Text className="text-lg font-bold ml-4 flex-1" >Edit Profile</Text>
+                    <Text className="text-lg font-bold ml-4 flex-1 font-poppins" >Edit Profile</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </Pressable>
                 <Pressable className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
                     <Ionicons name="md-home" size={24} color="#e21414" />
-                    <Text className="text-lg font-bold ml-4 flex-1" >Delivery address</Text>
+                    <Text className="text-lg font-bold ml-4 flex-1 font-poppins" >Delivery address</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </Pressable>
                 <Pressable onPress={() => navigation.navigate('orderHistory')} className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
                     <Feather name="shopping-bag" size={24} color="#e21414" />
-                    <Text className="text-lg font-bold ml-4 flex-1" >History of orders</Text>
+                    <Text className="text-lg font-bold ml-4 flex-1 font-poppins" >History of orders</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </Pressable>
                 <Pressable className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
                     <Ionicons name="notifications-circle-outline" size={24} color="#e21414" />
-                    <Text className="text-lg font-bold ml-4 flex-1" >Notification</Text>
+                    <Text className="text-lg font-bold ml-4 flex-1 font-poppins" >Notification</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </Pressable>
                 <TouchableOpacity onPress={userLogout} className='flex-row items-center bg-[#f8f8f8] rounded-lg py-3 px-4 mb-4'>
                     <MaterialIcons name="logout" size={24} color="#e21414" />
-                    <Text className="text-lg font-bold ml-4 flex-1" >Logout</Text>
+                    <Text className="text-lg font-bold ml-4 flex-1 font-poppins" >Logout</Text>
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </TouchableOpacity>
             </View>

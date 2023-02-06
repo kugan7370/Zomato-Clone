@@ -13,7 +13,12 @@ module.exports = {
         primary: {
           100: "#E42021",
         },
+      },
+      fontFamily: {
+        poppins: ["Poppins_500Medium"]
       }
+
+
     }
   },
   plugins: [],
