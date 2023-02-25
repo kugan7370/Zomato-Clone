@@ -15,6 +15,7 @@ import {
   Poppins_700Bold,
   Poppins_600SemiBold,
 } from "@expo-google-fonts/poppins";
+import Search from './Screens/Search';
 
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
             publishableKey={STRIPE_PUBLIC_KEY}
           >
             <RootNavigation />
+            {/* <Search /> */}
           </StripeProvider>
         </PersistGate>
       </Provider>

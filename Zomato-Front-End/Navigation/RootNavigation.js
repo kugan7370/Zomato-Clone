@@ -16,6 +16,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import DeliveryAddress from '../Screens/DeliveryAddress';
 import OrderSuccess from '../Screens/OrderSuccess';
 import OrderHistory from '../Screens/OrderHistory';
+import Search from '../Screens/Search';
 
 const MyTheme = {
     ...DefaultTheme,
@@ -54,11 +55,11 @@ export const HomeStack = () => {
         <Stack.Navigator initialRouteName="home" screenOptions={{ headerShown: false, }} keyboardDismissMode='on-drag'>
             <Stack.Screen name="home" component={Home} />
             <Stack.Screen name="details" component={Details} />
+            <Stack.Screen name="search" component={Search} />
             <Stack.Screen name="cart" component={Cart} />
             <Stack.Screen name="deliveryAddress" component={DeliveryAddress} />
             <Stack.Screen name="orderSuccess" component={OrderSuccess} />
             <Stack.Screen name="orderHistory" component={OrderHistory} />
-
         </Stack.Navigator>
     )
 }

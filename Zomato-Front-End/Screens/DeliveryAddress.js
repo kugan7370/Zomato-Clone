@@ -100,16 +100,6 @@ export default function DeliveryAddress() {
             Alert.alert(`Error code: ${error.code}`, error.message);
         }
 
-        //save orders
-
-
-
-
-
-
-
-
-
     }
 
     const chooseMap = async () => {

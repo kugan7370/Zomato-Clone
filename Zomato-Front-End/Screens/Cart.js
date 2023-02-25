@@ -60,7 +60,6 @@ export default function Cart() {
                         <Text className="font-semibold font-poppins text-slate-400">$ 0.00</Text>
                     </View>
 
-                    {/* <View className=" h-[1px] w-full bg-slate-500 my-1" /> */}
                     <View className="flex-row justify-between items-center mt-2 ">
                         <Text className=" font-poppinsSemiBold text-slate-900 text-lg tracking-wider">Total</Text>
                         <Text className="text-slate-900 font-poppins font-semibold text-lg">$ {subTotal?.toFixed(2) ?? 0.00}</Text>
