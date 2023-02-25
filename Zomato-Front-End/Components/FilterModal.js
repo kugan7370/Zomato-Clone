@@ -2,27 +2,69 @@ import Modal from "react-native-modal";
 import { View, Text, TextInput, TouchableOpacity, Dimensions, Switch, } from 'react-native'
 import React, { useState } from 'react'
 import { PrimaryColor } from '../constants/Colors';
+import { setIsDelivery, setIsRating, setMaxPrice, setMinPrice } from "../Redux/SwitchSlicer";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
-export default function FilterModal({ isModalVisibleStatus, toggleModalStatus }) {
-    //models
+export default function FilterModal({ isModalVisibleStatus, toggleModalStatus, onFilterSubmit }) {
+    const { isRating, isDelivery, isMaxPrice, isMinPrice } = useSelector((state) => state.switches)
+
     const [isModalVisible, setModalVisible] = useState(isModalVisibleStatus);
+    const [isRatingEnabled, setIsRatingEnabled] = useState(isRating);
+    const [isDeliveryTimeEnabled, setIsDeliveryTimeEnabled] = useState(isDelivery);
 
+    // price range
+    const [maxValue, setMaxValue] = useState(isMaxPrice)
+    const [minValue, setMinValue] = useState(isMinPrice)
 
+    const dispatch = useDispatch()
+
+    //model handle
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
         toggleModalStatus(!isModalVisible)
 
+
+        //filters
+        if (minValue && !maxValue) {
+            dispatch(setMinPrice(minValue))
+            dispatch(setMaxPrice(null))
+        }
+        if (!minValue && maxValue) {
+            dispatch(setMinPrice(null))
+            dispatch(setMaxPrice(maxValue))
+        }
+        if (!minValue && !maxValue) {
+            dispatch(setMaxPrice(null))
+            dispatch(setMinPrice(null))
+        }
+        if (minValue && maxValue) {
+            dispatch(setMaxPrice(maxValue))
+            dispatch(setMinPrice(minValue))
+        }
+
+
     };
 
 
+
+
+
     // ratings
-    const [isRatingEnabled, setIsRatingEnabled] = useState(false);
-    const toggleRatingSwitch = () => setIsRatingEnabled(previousState => !previousState);
+
+    const toggleRatingSwitch = (data) => {
+        setIsRatingEnabled(data);
+        dispatch(setIsRating(data))
+    }
 
     // delivery time
-    const [isDeliveryTimeEnabled, setIsDeliveryTimeEnabled] = useState(false);
-    const toggleDeliveryTimeSwitch = () => setIsDeliveryTimeEnabled(previousState => !previousState);
+    const toggleDeliveryTimeSwitch = (data) => {
+        setIsDeliveryTimeEnabled(data);
+        dispatch(setIsDelivery(data))
+    }
+
+
 
 
 
@@ -77,9 +119,9 @@ export default function FilterModal({ isModalVisibleStatus, toggleModalStatus })
                             {/* price range slider */}
                             <View className="flex-row items-center justify-between mt-6">
 
-                                <TextInput placeholder='min' placeholderTextColor='gray' className="py-2 px-4 w-[150] border rounded-lg border-gray-100 font-poppins" />
+                                <TextInput value={minValue} placeholder='min' onChangeText={setMinValue} placeholderTextColor='gray' className="py-2 px-4 w-[150] border rounded-lg border-gray-100 font-poppins" />
                                 <Text className="text-lg  font-poppinsSemiBold text-primary-100">-</Text>
-                                <TextInput placeholder='max' placeholderTextColor='gray' className="py-2 px-4 w-[150] border rounded-lg border-gray-100 font-poppins" />
+                                <TextInput value={maxValue} placeholder='max' onChangeText={setMaxValue} placeholderTextColor='gray' className="py-2 px-4 w-[150] border rounded-lg border-gray-100 font-poppins" />
                             </View>
 
                         </View>

@@ -7,6 +7,7 @@ import OrderReducers from './OrderSlicer'
 import FavoriteReducers from './FavoriteSlicer'
 import CategoryReducers from './CategorySlicer'
 
+
 import {
     persistStore,
     persistReducer,
@@ -19,6 +20,7 @@ import {
 } from 'redux-persist'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CategorySlicer from './CategorySlicer'
+import SwitchReducer from './SwitchSlicer'
 
 const persistConfig = {
     key: 'root',
@@ -33,7 +35,8 @@ const rootReducer = combineReducers({
     user: UserReducers,
     order: OrderReducers,
     favorite: FavoriteReducers,
-    categories: CategoryReducers
+    categories: CategoryReducers,
+    switches: SwitchReducer
 
 })
 

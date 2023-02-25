@@ -1,18 +1,19 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { View, Text, TextInput, TouchableOpacity, Keyboard, TouchableWithoutFeedback, ScrollView, Dimensions, } from 'react-native'
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { PrimaryColor } from '../constants/Colors';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import FoodList from '../Components/FoodList';
 import { useSelector } from 'react-redux';
-import Modal from "react-native-modal";
+
 import FilterModal from '../Components/FilterModal';
 
 export default function Search() {
     const [searchResults, setSearchResults] = useState()
     const [searchText, setSearchText] = useState('')
+    const [filterItems, setFilterItems] = useState()
 
     const { Foods } = useSelector((state) => state?.foods)
+    const { isRating, isDelivery, isMaxPrice, isMinPrice } = useSelector((state) => state.switches)
 
     //models
     const [isModalVisible, setModalVisible] = useState(false);
@@ -33,21 +34,55 @@ export default function Search() {
         inputRef.current.focus()
     }, [])
 
-    //filter search results
-
-    const filterResults = () => {
-        const filteredData = Foods?.filter((item) => {
+    //search results
+    const searchResultsData = () => {
+        let searchData = Foods?.filter((item) => {
             return item?.name?.toLowerCase().includes(searchText?.toLowerCase())
         })
-        setSearchResults(filteredData)
+
+        //sort by rating
+        if (isRating) {
+
+            searchData = searchData?.sort((a, b) => b?.rating - a?.rating)
+
+        }
+
+        //sort by delivery time
+        if (isDelivery) {
+            searchData = searchData?.sort((a, b) => a?.deliveryTime - b?.deliveryTime)
+        }
+
+        //sort by max price
+        if (isMaxPrice && !isMinPrice) {
+            searchData = searchData?.filter((item) => item?.price <= isMaxPrice)
+        }
+
+        //sort by min price
+        if (isMinPrice && !isMaxPrice) {
+            searchData = searchData?.filter((item) => item?.price >= isMinPrice)
+        }
+
+        //sort by min and max price
+        if (isMinPrice && isMaxPrice) {
+            searchData = searchData?.filter((item) => item?.price >= isMinPrice && item?.price <= isMaxPrice)
+        }
+
+
+
+        setSearchResults(searchData)
     }
+
+
+
+
+
 
 
     //get autocomplete results
     useEffect(() => {
-        filterResults()
+        searchResultsData()
 
-    }, [searchText])
+    }, [searchText, isRating, isDelivery, isMaxPrice, isMinPrice])
 
 
     const deviceWidth = Dimensions.get("window").width;
