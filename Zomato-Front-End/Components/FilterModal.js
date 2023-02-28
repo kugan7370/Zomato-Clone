@@ -67,7 +67,6 @@ export default function FilterModal({ isModalVisibleStatus, toggleModalStatus, o
     // ratings
 
     const toggleRatingSwitch = (data) => {
-        console.log("data", data);
         setIsRatingEnabled(data);
 
     }

@@ -14,7 +14,6 @@ const SwitchSlicer = createSlice({
     initialState,
     reducers: {
         setIsRating: (state, action) => {
-            console.log(action.payload);
             state.isRating = action.payload
         },
         setIsDelivery: (state, action) => {
@@ -25,12 +24,18 @@ const SwitchSlicer = createSlice({
         },
         setMinPrice: (state, action) => {
             state.isMinPrice = action.payload
+        },
+        resetSwitches: (state) => {
+            state.isRating = false
+            state.isDelivery = false
+            state.isMaxPrice = null
+            state.isMinPrice = null
         }
 
 
     }
 });
 
-export const { setIsRating, setIsDelivery, setMaxPrice, setMinPrice } = SwitchSlicer.actions
+export const { setIsRating, setIsDelivery, setMaxPrice, setMinPrice, resetSwitches } = SwitchSlicer.actions
 
 export default SwitchSlicer.reducer

@@ -8,6 +8,7 @@ import { logout } from '../Redux/UserSlicer';
 import { clearFavourite } from '../Redux/FavoriteSlicer';
 import { removeToken } from '../utils/getToken';
 import { addCardItemsToDb, clearCart } from '../Redux/CartSlicer';
+import { resetSwitches } from '../Redux/SwitchSlicer';
 
 export default function Profile() {
     const { user, token } = useSelector((state) => state.user)
@@ -19,8 +20,12 @@ export default function Profile() {
         dispatch(logout())
         dispatch(clearFavourite())
         dispatch(clearCart())
+        dispatch(resetSwitches())
         removeToken()
         navigation.navigate("signin")
+
+
+
     }
 
 
@@ -81,9 +86,6 @@ export default function Profile() {
                     <MaterialIcons className="ml-auto" name="arrow-forward-ios" size={24} color="#e21414" />
                 </TouchableOpacity>
             </View>
-
-
-
 
         </View>
     )
