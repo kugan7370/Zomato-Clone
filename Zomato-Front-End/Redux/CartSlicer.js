@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { BASE_URL } from "@env"
 import { Alert } from 'react-native'
-import { getToken } from './utils/getToken'
+import { getToken } from '../utils/getToken'
 
 
 

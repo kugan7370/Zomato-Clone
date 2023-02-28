@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { logout } from '../Redux/UserSlicer';
 import { clearFavourite } from '../Redux/FavoriteSlicer';
-import { removeToken } from '../Redux/utils/getToken';
+import { removeToken } from '../utils/getToken';
 import { addCardItemsToDb, clearCart } from '../Redux/CartSlicer';
 
 export default function Profile() {

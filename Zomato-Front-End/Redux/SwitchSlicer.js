@@ -4,7 +4,8 @@ const initialState = {
     isRating: false,
     isDelivery: false,
     isMaxPrice: null,
-    isMinPrice: null
+    isMinPrice: null,
+
 
 }
 
@@ -13,6 +14,7 @@ const SwitchSlicer = createSlice({
     initialState,
     reducers: {
         setIsRating: (state, action) => {
+            console.log(action.payload);
             state.isRating = action.payload
         },
         setIsDelivery: (state, action) => {

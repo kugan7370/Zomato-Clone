@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from "@env"
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getToken } from './utils/getToken';
+import { getToken } from '../utils/getToken';
 
 export const userAuth = createAsyncThunk('user/auth', async (data) => {
     try {

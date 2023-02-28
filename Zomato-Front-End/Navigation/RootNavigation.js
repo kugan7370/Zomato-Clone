@@ -71,11 +71,17 @@ const Tab = createBottomTabNavigator();
 export default function BottomTapNavigation() {
     const { cartItems } = useSelector((state) => state.cart)
     return (
-        <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: false, tabBarStyle: { height: 60, padding: 10 }, }}>
+        <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: false, tabBarStyle: { height: 80, padding: 10 }, }}>
             <Tab.Screen name="Home" component={HomeStack} options={{
 
                 tabBarIcon: ({ color, size, focused }) => (
                     <Entypo name="home" size={24} color={focused ? 'red' : "black"} />
+                )
+            }} />
+            <Tab.Screen name="search" component={Search} options={{
+
+                tabBarIcon: ({ color, size, focused }) => (
+                    <FontAwesome5 name="search" size={24} color={focused ? 'red' : "black"} />
                 )
             }} />
             <Tab.Screen name="Favorites" component={Saved} options={{

@@ -28,7 +28,7 @@ export default function Popular({ popularFood }) {
     }, [favorite])
 
     return (
-        <TouchableOpacity onPress={() => navigation.navigate("details", { foodDetail: popularFood })} className="relative mr-2 h-48 w-80 justify-center items-center  rounded-xl">
+        <TouchableOpacity onPress={() => navigation.navigate("details", { foodDetail: popularFood })} className="relative mr-2 h-48 w-72 justify-center items-center  rounded-xl">
             <Image className='h-full w-full rounded-xl object-cover' source={{ uri: popularFood.image }} />
             <View className='flex-row justify-between items-center absolute bottom-3 right-4 left-4'>
                 <Text className="text-white  font-poppinsSemiBold">{itemName.length < 8 ? itemName : itemName.slice(0, 8) + "..."}</Text>

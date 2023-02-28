@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { Alert } from 'react-native'
 import { BASE_URL } from "@env"
-import { getToken } from './utils/getToken'
+import { getToken } from '../utils/getToken'
 
 export const addLikeFoods = async (foodId) => {
     const token = await getToken()

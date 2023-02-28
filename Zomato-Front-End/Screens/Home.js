@@ -17,6 +17,7 @@ import { getCardItemsFromDb } from '../Redux/CartSlicer';
 import { getCategories } from '../Redux/CategorySlicer';
 import { useNavigation } from '@react-navigation/native';
 import FilterModal from '../Components/FilterModal';
+import { slideImages } from '../assets/data/data';
 
 export default function Home() {
 
@@ -96,10 +97,24 @@ export default function Home() {
                 </View>
 
 
+                {/* categories */}
+                <View className="mt-6">
+                    <View className="px-4" >
+                        <BigText title={"Categories"} />
+                    </View>
+
+                    <ScrollView className="mt-6 px-4" horizontal showsHorizontalScrollIndicator={false} >
+                        {categories?.length > 0 && isCategoryLoading ?
+                            <ActivityIndicator size="large" color={PrimaryColor} />
+                            : categories?.map((item) => <Categories categories={item} key={item._id} />)
+                        }
+                    </ScrollView>
+
+                </View>
 
 
                 {/* search and filter  */}
-                <View className="flex-row justify-between items-center mx-2 p-4 mt-8 ">
+                {/* <View className="flex-row justify-between items-center mx-2 p-4 mt-8 ">
                     <TouchableOpacity onPress={() => navigation.navigate("search")} className="flex-row flex-1 items-center py-3 px-2 border border-1 border-gray-100 rounded-lg">
                         <View className="h-10 w-10  rounded-full justify-center items-center">
                             <Ionicons name="ios-search" size={36} color={PrimaryColor} />
@@ -113,12 +128,25 @@ export default function Home() {
                     <TouchableOpacity onPress={toggleModal} className="h-16 bg-primary-100 w-16 p-2 ml-4  justify-center items-center border border-1 border-gray-100 rounded-lg">
                         <MaterialCommunityIcons name="filter-variant-plus" size={24} color="white" />
                     </TouchableOpacity>
+                </View> */}
+
+
+
+                {/* Special offers */}
+                <View className="mt-6 ">
+                    <View className="px-4" >
+                        <BigText title={"Special offers"} />
+                    </View>
+                    <ScrollView className="mt-6" horizontal showsHorizontalScrollIndicator={false}>
+                        {slideImages.map((item) => (
+                            <TouchableOpacity key={item.id} className="relative px-2 mr-2 h-48 w-screen overflow-hidden justify-center items-center ">
+                                <Image className='h-full w-full rounded-lg object-cover' source={item.image} />
+                            </TouchableOpacity>
+                        ))}
+                    </ScrollView>
                 </View>
-
-
-
                 {/* popular */}
-                <View className="mt-8 ">
+                <View className="mt-6 ">
                     <View className="px-4">
                         <BigText title={"Popular"} />
                     </View>
@@ -134,23 +162,9 @@ export default function Home() {
                 </View>
 
 
-                {/* categories */}
-                <View className="mt-10">
-                    <View className="px-4" >
-                        <BigText title={"Categories"} />
-                    </View>
-
-                    <ScrollView className="mt-6 px-4" horizontal showsHorizontalScrollIndicator={false} >
-                        {categories?.length > 0 && isCategoryLoading ?
-                            <ActivityIndicator size="large" color={PrimaryColor} />
-                            : categories?.map((item) => <Categories categories={item} key={item._id} />)
-                        }
-                    </ScrollView>
-
-                </View>
 
                 {/* food for you */}
-                <View className="mt-10">
+                <View className="mt-6">
                     <View className="px-4" >
                         <BigText title={"Food for you"} />
                     </View>
